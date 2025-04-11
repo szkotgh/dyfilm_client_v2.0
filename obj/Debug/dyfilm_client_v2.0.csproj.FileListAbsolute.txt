@@ -1,0 +1,12 @@
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\bin\Debug\dyfilm_client_v2.0.exe.config
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\bin\Debug\dyfilm_client_v2.0.exe
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\bin\Debug\dyfilm_client_v2.0.pdb
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2.0.csproj.AssemblyReference.cache
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.Properties.Resources.resources
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2.0.csproj.GenerateResource.cache
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2.0.csproj.CoreCompileInputs.cache
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2.0.exe
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2.0.pdb
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.Frame.resources
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.main.resources
+C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.camera.resources
