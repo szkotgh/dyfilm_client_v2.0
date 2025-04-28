@@ -25,13 +25,13 @@ namespace dyfilm_client_v2._0.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("film.szk.kr")]
-        public string process_url {
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        public string version {
             get {
-                return ((string)(this["process_url"]));
+                return ((string)(this["version"]));
             }
             set {
-                this["process_url"] = value;
+                this["version"] = value;
             }
         }
         
@@ -44,6 +44,18 @@ namespace dyfilm_client_v2._0.Properties {
             }
             set {
                 this["auth_token"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://film.szk.kr")]
+        public string process_url {
+            get {
+                return ((string)(this["process_url"]));
+            }
+            set {
+                this["process_url"] = value;
             }
         }
     }

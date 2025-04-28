@@ -30,6 +30,7 @@
         {
             this.title1 = new System.Windows.Forms.Label();
             this.title2 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // title1
@@ -39,9 +40,9 @@
             this.title1.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.title1.Location = new System.Drawing.Point(52, 56);
             this.title1.Name = "title1";
-            this.title1.Size = new System.Drawing.Size(693, 57);
+            this.title1.Size = new System.Drawing.Size(176, 57);
             this.title1.TabIndex = 1;
-            this.title1.Text = "덕영필름 클라이언트를 시작합니다.";
+            this.title1.Text = "TITLE 1";
             // 
             // title2
             // 
@@ -49,21 +50,30 @@
             this.title2.BackColor = System.Drawing.Color.White;
             this.title2.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.title2.ForeColor = System.Drawing.Color.DimGray;
-            this.title2.Location = new System.Drawing.Point(56, 113);
+            this.title2.Location = new System.Drawing.Point(56, 191);
             this.title2.Name = "title2";
             this.title2.Size = new System.Drawing.Size(110, 35);
             this.title2.TabIndex = 2;
             this.title2.Text = "TITLE 2";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(62, 135);
+            this.progressBar1.MarqueeAnimationSpeed = 20;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1796, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 3;
+            // 
             // first
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.title2);
             this.Controls.Add(this.title1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "first";
-            this.Text = "tt";
             this.Load += new System.EventHandler(this.first_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -74,5 +84,6 @@
 
         private System.Windows.Forms.Label title1;
         private System.Windows.Forms.Label title2;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

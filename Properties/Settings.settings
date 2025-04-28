@@ -2,11 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="dyfilm_client_v2._0.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="process_url" Type="System.String" Scope="User">
-      <Value Profile="(Default)">film.szk.kr</Value>
+    <Setting Name="version" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0</Value>
     </Setting>
     <Setting Name="auth_token" Type="System.String" Scope="User">
       <Value Profile="(Default)">c74605e1930109177317450dd811e3ee</Value>
+    </Setting>
+    <Setting Name="process_url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://film.szk.kr</Value>
     </Setting>
   </Settings>
 </SettingsFile>

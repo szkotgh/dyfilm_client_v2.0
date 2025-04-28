@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dyfilm_client_v2._0.src;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,8 +7,12 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Text.Json;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static dyfilm_client_v2._0.src.data_struct;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace dyfilm_client_v2._0.forms
 {
@@ -18,36 +23,144 @@ namespace dyfilm_client_v2._0.forms
 			InitializeComponent();
 		}
 
-        private async void first_Load(object sender, EventArgs e)
-        {
-			// first start delay (5 second)
-			for (int i = 5; i > 0; i--)
-			{
-				title2.Text = i + "초 뒤 실행됩니다.";
-				await Task.Delay(1000);
-			}
+		private async void fail_cant_start(string msg)
+		{
+			progressBar1.Style = ProgressBarStyle.Marquee;
 
-			// main image load
-			title1.Text = "서버에서 데이터를 불러오는 중입니다.";
-			title2.Text = "메인 화면 이미지를 불러오고 있습니다.";
-			String main_image_url = "https://film.szk.kr/device/main_image/get_image";
-			String save_path = "src/main_image.jpg";
-			try
-			{
-				byte[] imageBytes = await APIClient.RequestAsync(main_image_url, method: "GET");
-				File.WriteAllBytes(save_path, imageBytes);
-			} catch (Exception ee)
-			{
-				title1.Text = "오류가 발생했습니다. 실행할 수 없습니다.";
-				title2.Text = ee.ToString();
+			title1.ForeColor = Color.Red;
+			title1.Text = "덕영필름 클라이언트를 시작할 수 없습니다.";
+			title2.Text = msg;
+
+            for (int i = 10; i > 0; i--)
+            {
+                title2.Text = msg + "\n\n";
+                title2.Text += i + "초 뒤 재시작됩니다.";
+                await Task.Delay(1000);
             }
 
-			// frame image load
-			title2.Text = "프레임 이미지 정보를 불러오고 있습니다.";
-			String frame_image_ㅇ_url = "https://film.szk.kr/device/frame/frame_list";
+			utils.RestartApplication();
+			//Environment.Exit(1);
+			return;
+        }
+
+		private void set_progressbar(int value)
+		{
+			progressBar1.Value = value;
+		}
+
+        private async void first_Load(object sender, EventArgs e)
+        {
+			try
+			{
+				config.properties_init();
+            }
+			catch (Exception ee)
+			{
+				fail_cant_start("Properties에 필수 데이터가 누락되었습니다. 확인하십시오.");
+				return;
+			}
+			config.dir_init();
+
+			// first start delay (10 second)
+			//set_progressbar(10);
+			progressBar1.Style = ProgressBarStyle.Marquee;
+            title1.Text = "덕영필름 클라이언트(v" + config.version + ")를 시작합니다.";
+            for (int i = 10; i > 0; i--)
+			{
+				title2.Text = "클라이언트 기본 정보\n";
+                title2.Text += "version=" + config.version + '\n';
+                title2.Text += "auth_token=" + config.auth_token + '\n';
+				title2.Text += "process_url=" + config.process_url + "\n\n";
+                title2.Text += i + "초 뒤 실행됩니다.";
+				await Task.Delay(1000);
+			}
+			progressBar1.Style = ProgressBarStyle.Blocks;
+
+            // main image load
+            set_progressbar(20);
+            title1.Text = "서버에서 데이터를 불러오는 중입니다.";
+			title2.Text = "메인 화면 이미지를 불러오고 있습니다.";
+			string main_image_url = config.process_url + "/device/main_image/get_image";
+			try
+			{
+				byte[] file_bytes = await APIClient.RequestAsync(main_image_url, method: "GET");
+				File.WriteAllBytes(config.MAIN_IMAGE_PATH, file_bytes);
+			}
+			catch (Exception ee)
+			{
+                fail_cant_start("메인 화면 이미지 로드에 실패했습니다.\n" + ee.ToString());
+                return;
+            }
+
+            // frame image load
+            // // frame info
+			set_progressbar(30);
+            title2.Text = "프레임 이미지 정보를 불러오고 있습니다.";
+			string frame_info_url = config.process_url + "/device/frame/frame_list";
+			try
+			{
+				byte[] file_bytes = await APIClient.RequestAsync(frame_info_url, method: "GET");
+				File.WriteAllBytes(config.FRAME_INFO_PATH, file_bytes);
+			}
+			catch (Exception ee)
+			{
+				fail_cant_start("프레임 이미지 정보 로드에 실패했습니다.\n" + ee.ToString());
+                return;
+            }
+
+            // // frame image
+            title2.Text = "프레임 이미지를 불러오고 있습니다.";
+            string frame_info_txt = File.ReadAllText(config.FRAME_INFO_PATH);
+            data_struct.FrameInfo frame_info_json = JsonSerializer.Deserialize<FrameInfo>(frame_info_txt);
+
+            int index = 0;
+            int frame_info_count = frame_info_json?.info?.Count ?? 0;
+            int pm_value = frame_info_count > 0 ? Convert.ToInt32(70 / frame_info_count) : 0;
+            foreach (var item in frame_info_json.info)
+			{
+				index++;
+                title2.Text = "프레임 이미지를 불러오고 있습니다. (" + frame_info_count + "/" + index + ")";
+				set_progressbar(30 + (pm_value * index));
+
+				if (item[1].ToString() == "0")
+				{
+					title2.Text += " 비활성화된 프레임. 수신을 건너뜁니다 . . .";
+					await Task.Delay(1000);
+					continue;
+				}
+
+                string frame_image_url = config.process_url + "/device/frame/frame_get?f_id=" + item[0];
+				string save_path = Path.Combine(config.FRAME_PATH, item[0] + ".png");
+				try
+				{
+					byte[] frame_image_bytes = await APIClient.RequestAsync(frame_image_url, method: "GET");
+					File.WriteAllBytes(save_path, frame_image_bytes);
+                }
+				catch (Exception ee)
+				{
+                    fail_cant_start("프레임 이미지(f_id=" + item[0] + ") 로드에 실패했습니다.\n" + ee.ToString());
+                }
+
+			}
+			set_progressbar(100);
+			await Task.Delay(200);
+
+			// complete load data
+			progressBar1.Style = ProgressBarStyle.Marquee;
+			title1.Text = "서버에서 데이터를 성공적으로 수신했습니다.";
+			for (int i = 10; i > 0; i--)
+			{
+                title2.Text = i + "초 뒤 실행됩니다.";
+				await Task.Delay(1000);
+            }
 
 
 
+
+            main newMain = new main();
+            newMain.Owner = this;
+            newMain.Show();
+            this.Hide();
         }
     }
 }

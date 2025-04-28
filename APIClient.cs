@@ -13,7 +13,6 @@ namespace dyfilm_client_v2._0
         {
             try
             {
-                // 요청 보낼 HttpRequestMessage 생성
                 using (var requestMessage = new HttpRequestMessage(new HttpMethod(method), url))
                 {
                     // Authorization 헤더 추가
