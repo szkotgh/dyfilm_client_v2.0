@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="process_url" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
+      <Value Profile="(Default)">film.szk.kr</Value>
     </Setting>
-    <Setting Name="token" Type="System.String" Scope="User">
-      <Value Profile="(Default)">b0fc6c2b727c2b9f699532ad58ff25a0</Value>
+    <Setting Name="auth_token" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c74605e1930109177317450dd811e3ee</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -10,3 +10,14 @@ C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_
 C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.Frame.resources
 C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.main.resources
 C:\Users\4070ti\Desktop\덕영필름\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.camera.resources
+C:\Users\gi679\Downloads\dyfilm_client\bin\Debug\dyfilm_client_v2.0.exe.config
+C:\Users\gi679\Downloads\dyfilm_client\bin\Debug\dyfilm_client_v2.0.exe
+C:\Users\gi679\Downloads\dyfilm_client\bin\Debug\dyfilm_client_v2.0.pdb
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2.0.csproj.AssemblyReference.cache
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2._0.forms.Frame.resources
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2._0.Properties.Resources.resources
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2.0.csproj.GenerateResource.cache
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2.0.csproj.CoreCompileInputs.cache
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2.0.exe
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2.0.pdb
+C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2._0.forms.first.resources

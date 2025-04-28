@@ -16,7 +16,7 @@ namespace dyfilm_client_v2._0
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new forms.main());
+            Application.Run(new forms.first());
         }
     }
 }
