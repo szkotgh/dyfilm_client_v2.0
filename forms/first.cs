@@ -45,7 +45,8 @@ namespace dyfilm_client_v2._0.forms
 
 		private void set_progressbar(int value)
 		{
-			progressBar1.Value = value;
+			progressBar1.Style = ProgressBarStyle.Blocks;
+            progressBar1.Value = value;
 		}
 
         private async void first_Load(object sender, EventArgs e)
@@ -74,7 +75,41 @@ namespace dyfilm_client_v2._0.forms
                 title2.Text += i + "초 뒤 실행됩니다.";
 				await Task.Delay(1000);
 			}
-			progressBar1.Style = ProgressBarStyle.Blocks;
+
+			// check device enable
+			set_progressbar(10);
+			title1.Text = "장치 인증 중입니다.";
+			title2.Text = "올바른 장치인지 확인합니다.";
+			string verify_token_url = config.process_url + "/device/verify_token";
+			try
+			{
+				byte[] auth_result_bytes = await APIClient.RequestAsync(verify_token_url, method: "GET");
+				if (auth_result_bytes == null)
+				{
+					fail_cant_start("인증 토큰 오류입니다. 토큰을 확인하십시오.");
+					return;
+				}
+				File.WriteAllBytes(config.AUTH_RESULT_PATH, auth_result_bytes);
+
+				string auth_result = File.ReadAllText(config.AUTH_RESULT_PATH);
+                data_struct.VerifyToken auth_result_json = JsonSerializer.Deserialize<VerifyToken>(auth_result);
+
+				if (auth_result_json.info[1].ToString() == "0")
+				{
+					fail_cant_start("비활성화된 장치입니다.\n"+"장치 아이디: "+ auth_result_json.info[0].ToString());
+					return;
+				}
+
+				progressBar1.Style = ProgressBarStyle.Marquee;
+                title2.Text = "장치 인증에 성공했습니다.\ndesc=" + auth_result_json.info[2].ToString();
+				await Task.Delay(1000);
+            }
+			catch (Exception ee)
+			{
+                fail_cant_start("장치 인증에 실패했습니다.\n" + ee.ToString());
+                return;
+            }
+
 
             // main image load
             set_progressbar(20);
@@ -130,7 +165,7 @@ namespace dyfilm_client_v2._0.forms
 				}
 
                 string frame_image_url = config.process_url + "/device/frame/frame_get?f_id=" + item[0];
-				string save_path = Path.Combine(config.FRAME_PATH, item[0] + ".png");
+				string save_path = Path.Combine(config.FRAME_PATH, item[2].ToString());
 				try
 				{
 					byte[] frame_image_bytes = await APIClient.RequestAsync(frame_image_url, method: "GET");
@@ -148,14 +183,11 @@ namespace dyfilm_client_v2._0.forms
 			// complete load data
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			title1.Text = "서버에서 데이터를 성공적으로 수신했습니다.";
-			for (int i = 10; i > 0; i--)
+			for (int i = 3; i > 0; i--)
 			{
                 title2.Text = i + "초 뒤 실행됩니다.";
 				await Task.Delay(1000);
             }
-
-
-
 
             main newMain = new main();
             newMain.Owner = this;

@@ -18,21 +18,49 @@ namespace dyfilm_client_v2._0.forms
             InitializeComponent();
         }
 
-        private void main_Load(object sender, EventArgs e)
+        private void main_Close(object sender, FormClosedEventArgs e)
         {
-            // load main_image
-            PictureBox gifPictureBox = new PictureBox();
-            gifPictureBox.Image = Image.FromFile(config.MAIN_IMAGE_PATH);
-            gifPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            gifPictureBox.Dock = DockStyle.Fill;
-
-            touch_panel.Controls.Add(gifPictureBox);
+            Environment.Exit(0);
         }
 
-        private void touch_panel_click(object sender, EventArgs e)
+        private void main_Load(object sender, EventArgs e)
         {
-            this.Hide();
-            new first().ShowDialog();
+            touchpictureBox1.Image = Image.FromFile(config.MAIN_IMAGE_PATH);
+            touchpictureBox1.Dock = DockStyle.Fill;
+        }
+
+        private DateTime mouseDownTime;
+
+        private void touchpictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownTime = DateTime.Now;
+        }
+
+        private void touchpictureBox1_MouseUp(object sender, EventArgs e)
+        {
+            TimeSpan duration = DateTime.Now - mouseDownTime;
+            if (duration.Seconds >= 3)
+            {
+                admin_panel.Visible = true;
+                return;
+            }
+
+            new sel_frame().ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            utils.RestartApplication();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            admin_panel.Visible = false;
         }
     }
 }

@@ -111,6 +111,12 @@
     <Compile Include="forms\main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\sel_frame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\sel_frame.Designer.cs">
+      <DependentUpon>sel_frame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\main.resx">
       <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\sel_frame.resx">
+      <DependentUpon>sel_frame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frame.resx">
       <DependentUpon>Frame.cs</DependentUpon>

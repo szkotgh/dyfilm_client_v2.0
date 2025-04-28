@@ -15,6 +15,7 @@ namespace dyfilm_client_v2._0.src
 
         public static string SOURCE_PATH = Path.Combine(Application.StartupPath, "src");
         public static string MAIN_IMAGE_PATH = Path.Combine(SOURCE_PATH, "main_image.gif");
+        public static string AUTH_RESULT_PATH = Path.Combine(SOURCE_PATH, "auth_result.json");
 
         public static string FRAME_PATH = Path.Combine(SOURCE_PATH, "frames");
         public static string FRAME_INFO_PATH = Path.Combine(FRAME_PATH, "info.json");
