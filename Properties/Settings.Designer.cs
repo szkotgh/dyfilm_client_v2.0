@@ -37,7 +37,7 @@ namespace dyfilm_client_v2._0.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("d5b8bcb78d2aa4f40b85718c2562776b")]
+        [global::System.Configuration.DefaultSettingValueAttribute("48637c6b0b3edab0f80d90ee6d7c8a0a")]
         public string auth_token {
             get {
                 return ((string)(this["auth_token"]));

@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.order_panel = new System.Windows.Forms.Panel();
             this.frame_flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.FormClosing += sel_frame_FormClosing;
             this.order_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +130,7 @@
             this.Name = "sel_frame";
             this.Text = "sel_frame";
             this.Load += new System.EventHandler(this.sel_frame_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.sel_frame_FormClosing);
             this.order_panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
