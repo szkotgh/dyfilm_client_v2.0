@@ -25,7 +25,7 @@ namespace dyfilm_client_v2._0.forms
 
         private void main_Load(object sender, EventArgs e)
         {
-            touchpictureBox1.Image = Image.FromFile(config.MAIN_IMAGE_PATH);
+            touchpictureBox1.Image = Image.FromFile(Config.MAIN_IMAGE_PATH);
             touchpictureBox1.Dock = DockStyle.Fill;
         }
 
@@ -55,7 +55,7 @@ namespace dyfilm_client_v2._0.forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            utils.RestartApplication();
+            Utils.RestartApplication();
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -8,12 +8,15 @@ using System.Windows.Forms;
 
 namespace dyfilm_client_v2._0.src
 {
-    internal class config
+    internal class Config
     {
         // Path Variable
         public static string HOME_PATH = Application.StartupPath;
 
-        public static string SOURCE_PATH = Path.Combine(Application.StartupPath, "src");
+        public static string SOURCE_PATH = Path.Combine(HOME_PATH, "src");
+        public static string EDSDK_PATH = Path.Combine(SOURCE_PATH, "EDSDK");
+        public static string EDSDK_DLL_PATH = Path.Combine(EDSDK_PATH, "Dll", "EDSDK.dll");
+
         public static string MAIN_IMAGE_PATH = Path.Combine(SOURCE_PATH, "main_image.gif");
         public static string AUTH_RESULT_PATH = Path.Combine(SOURCE_PATH, "auth_result.json");
 

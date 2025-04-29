@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dyfilm_client_v2._0.src
 {
-    internal class data_struct
+    internal class DataStruct
     {
         public class VerifyToken
         {

@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static dyfilm_client_v2._0.src.data_struct;
+using static dyfilm_client_v2._0.src.DataStruct;
 
 namespace dyfilm_client_v2._0.forms
 {
@@ -28,7 +28,7 @@ namespace dyfilm_client_v2._0.forms
         private void sel_frame_Load(object sender, EventArgs e)
         {
 
-            string frameInfoText = File.ReadAllText(config.FRAME_INFO_PATH);
+            string frameInfoText = File.ReadAllText(Config.FRAME_INFO_PATH);
             FrameInfo frameInfo = JsonSerializer.Deserialize<FrameInfo>(frameInfoText);
 
             foreach (var item in frameInfo.info)
@@ -39,11 +39,11 @@ namespace dyfilm_client_v2._0.forms
 
                 // status True(1): Add Image
                 string frame_count = item[3].ToString();
-                data_struct.Frame frame_info_json = JsonSerializer.Deserialize<data_struct.Frame>(frame_count);
+                DataStruct.Frame frame_info_json = JsonSerializer.Deserialize<DataStruct.Frame>(frame_count);
                 int capture_count = frame_info_json.captures.Count;
 
                 string frameDescription = item[4].ToString() + " [" + capture_count + "컷]";
-                string frameImagePath = Path.Combine(config.FRAME_PATH, item[2].ToString());
+                string frameImagePath = Path.Combine(Config.FRAME_PATH, item[2].ToString());
 
                 if (File.Exists(frameImagePath))
                 {
@@ -189,7 +189,9 @@ namespace dyfilm_client_v2._0.forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            utils.info_msg(sel_f_id);
+            this.Close();
+            camera_capture.sel_f_id = sel_f_id;
+            new camera_capture().ShowDialog();
         }
     }
 }

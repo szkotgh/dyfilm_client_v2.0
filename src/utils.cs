@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace dyfilm_client_v2._0.src
 {
-    internal class utils
+    internal class Utils
     {
 
         public static void RestartApplication()
