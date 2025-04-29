@@ -77,3 +77,4 @@ C:\Users\gi679\Downloads\dyfilm_client\bin\Debug\System.Threading.Tasks.Extensio
 C:\Users\gi679\Downloads\dyfilm_client\bin\Debug\System.ValueTuple.xml
 C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_c.CFFC3552.Up2Date
 C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2._0.forms.sel_frame.resources
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.sel_frame.resources
