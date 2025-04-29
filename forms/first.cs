@@ -178,12 +178,31 @@ namespace dyfilm_client_v2._0.forms
 
 			}
 			set_progressbar(100);
-			await Task.Delay(200);
+			await Task.Delay(300);
 
 			// complete load data
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			title1.Text = "서버에서 데이터를 성공적으로 수신했습니다.";
-			for (int i = 3; i > 0; i--)
+			title2.Text = "프로그램을 최적화 중입니다.";
+			set_progressbar(0);
+			int progress_value = 0;
+			while (progress_value < 100)
+			{
+                Random rand = new Random();
+                progress_value += rand.Next(1, 5);
+				if (progress_value > 100)
+					progress_value = 100;
+
+                set_progressbar(progress_value);
+				await Task.Delay(rand.Next(1, 100));
+            }
+            title2.Text = "최적화가 완료되었습니다.";
+            await Task.Delay(1000);
+			progressBar1.Style = ProgressBarStyle.Marquee;
+            await Task.Delay(2000);
+
+			title1.Text = "덕영필름 클라이언트(v" + config.version + ")를 시작합니다.";
+            for (int i = 3; i > 0; i--)
 			{
                 title2.Text = i + "초 뒤 실행됩니다.";
 				await Task.Delay(1000);

@@ -33,6 +33,11 @@ namespace dyfilm_client_v2._0.forms
 
             foreach (var item in frameInfo.info)
             {
+                // status False(0): skip
+                if (item[1].ToString() == "0")
+                    continue;
+
+                // 
                 string frameDescription = item[4].ToString();
                 string frameImagePath = Path.Combine(config.FRAME_PATH, item[2].ToString());
 

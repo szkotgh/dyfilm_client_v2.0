@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.order_panel = new System.Windows.Forms.Panel();
             this.frame_flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.FormClosing += sel_frame_FormClosing;
             this.order_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,9 +110,10 @@
             // frame_flowLayoutPanel1
             // 
             this.frame_flowLayoutPanel1.AutoScroll = true;
-            this.frame_flowLayoutPanel1.Location = new System.Drawing.Point(12, 150);
+            this.frame_flowLayoutPanel1.BackColor = System.Drawing.Color.GhostWhite;
+            this.frame_flowLayoutPanel1.Location = new System.Drawing.Point(0, 150);
             this.frame_flowLayoutPanel1.Name = "frame_flowLayoutPanel1";
-            this.frame_flowLayoutPanel1.Size = new System.Drawing.Size(1896, 800);
+            this.frame_flowLayoutPanel1.Size = new System.Drawing.Size(1920, 800);
             this.frame_flowLayoutPanel1.TabIndex = 0;
             this.frame_flowLayoutPanel1.WrapContents = false;
             // 
@@ -129,8 +129,8 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "sel_frame";
             this.Text = "sel_frame";
-            this.Load += new System.EventHandler(this.sel_frame_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.sel_frame_FormClosing);
+            this.Load += new System.EventHandler(this.sel_frame_Load);
             this.order_panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
