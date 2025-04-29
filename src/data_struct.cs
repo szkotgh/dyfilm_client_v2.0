@@ -21,5 +21,11 @@ namespace dyfilm_client_v2._0.src
             public List<List<object>> info { get; set; }
             public string message { get; set; }
         };
+
+        public class Frame
+        {
+            public Dictionary<string, object> canvas { get; set; }
+            public List<Dictionary<string, object>> captures { get; set; }
+        }
     }
 }

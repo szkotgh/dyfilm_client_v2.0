@@ -16,17 +16,17 @@ namespace dyfilm_client_v2._0.forms
         private bool wasDragged = false;
         private Point dragStartScreenPos;
         private int scrollStartX;
+        private string sel_f_id;
 
         public sel_frame()
         {
             InitializeComponent();
-            SetDoubleBuffered(frame_flowLayoutPanel1);
+            SetDoubleBuffered(frame_flowLayoutPanel);
             InitializeFrameFlowLayout();
         }
 
         private void sel_frame_Load(object sender, EventArgs e)
         {
-            title1.Text = "프레임을 선택하세요";
 
             string frameInfoText = File.ReadAllText(config.FRAME_INFO_PATH);
             FrameInfo frameInfo = JsonSerializer.Deserialize<FrameInfo>(frameInfoText);
@@ -37,37 +37,41 @@ namespace dyfilm_client_v2._0.forms
                 if (item[1].ToString() == "0")
                     continue;
 
-                // 
-                string frameDescription = item[4].ToString();
+                // status True(1): Add Image
+                string frame_count = item[3].ToString();
+                data_struct.Frame frame_info_json = JsonSerializer.Deserialize<data_struct.Frame>(frame_count);
+                int capture_count = frame_info_json.captures.Count;
+
+                string frameDescription = item[4].ToString() + " [" + capture_count + "컷]";
                 string frameImagePath = Path.Combine(config.FRAME_PATH, item[2].ToString());
 
                 if (File.Exists(frameImagePath))
                 {
                     Image image = Image.FromFile(frameImagePath);
-                    CreateFrameItem(image, frameDescription);
+                    CreateFrameItem(image, frameDescription, item[0].ToString());
                 }
             }
         }
 
         private void InitializeFrameFlowLayout()
         {
-            frame_flowLayoutPanel1.AutoScroll = true;
-            frame_flowLayoutPanel1.HorizontalScroll.Enabled = true;
-            frame_flowLayoutPanel1.HorizontalScroll.Visible = true;
-            frame_flowLayoutPanel1.VerticalScroll.Enabled = false;
-            frame_flowLayoutPanel1.VerticalScroll.Visible = false;
-            frame_flowLayoutPanel1.WrapContents = false;
-            frame_flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
-            frame_flowLayoutPanel1.Padding = new Padding(0, 20, 0, 20);
+            frame_flowLayoutPanel.AutoScroll = true;
+            frame_flowLayoutPanel.HorizontalScroll.Enabled = true;
+            frame_flowLayoutPanel.HorizontalScroll.Visible = true;
+            frame_flowLayoutPanel.VerticalScroll.Enabled = false;
+            frame_flowLayoutPanel.VerticalScroll.Visible = false;
+            frame_flowLayoutPanel.WrapContents = false;
+            frame_flowLayoutPanel.FlowDirection = FlowDirection.LeftToRight;
+            frame_flowLayoutPanel.Padding = new Padding(0, 20, 0, 20);
 
-            frame_flowLayoutPanel1.MouseDown += Frame_MouseDown;
-            frame_flowLayoutPanel1.MouseMove += Frame_MouseMove;
-            frame_flowLayoutPanel1.MouseUp += Frame_MouseUp;
+            frame_flowLayoutPanel.MouseDown += Frame_MouseDown;
+            frame_flowLayoutPanel.MouseMove += Frame_MouseMove;
+            frame_flowLayoutPanel.MouseUp += Frame_MouseUp;
         }
 
-        private void CreateFrameItem(Image img, string description)
+        private void CreateFrameItem(Image img, string description, string f_id)
         {
-            int panelHeight = frame_flowLayoutPanel1.ClientSize.Height - 80;
+            int panelHeight = frame_flowLayoutPanel.ClientSize.Height - 120;
             int newWidth = (int)((float)panelHeight / img.Height * img.Width);
 
             PictureBox pictureBox = new PictureBox
@@ -79,28 +83,35 @@ namespace dyfilm_client_v2._0.forms
                 Cursor = Cursors.Hand
             };
 
-            pictureBox.MouseDown += Frame_MouseDown;
-            pictureBox.MouseMove += Frame_MouseMove;
-            pictureBox.MouseUp += Frame_MouseUp;
+            pictureBox.MouseDown  += Frame_MouseDown;
+            pictureBox.MouseMove  += Frame_MouseMove;
+            pictureBox.MouseUp    += Frame_MouseUp;
             pictureBox.MouseClick += (s, e) =>
             {
                 if (!wasDragged)
-                    utils.warn_msg(description);
+                {
+                    confirm_frame.Visible = true;
+                    pictureBox1.Image = img;
+                    sel_f_id = f_id;
+                }
             };
 
             Label label = new Label
             {
                 Text = description,
-                TextAlign = ContentAlignment.MiddleCenter,
+                TextAlign = ContentAlignment.MiddleLeft,
                 Dock = DockStyle.Bottom,
                 AutoSize = false,
-                Height = 40,
-                Font = new Font("맑은 고딕", 10, FontStyle.Regular)
+                Height = 46,
+                Font = new Font("AppleSDGothicNeoEB00", 30, FontStyle.Bold)
             };
+            label.MouseDown += Frame_MouseDown;
+            label.MouseMove += Frame_MouseMove;
+            label.MouseUp   += Frame_MouseUp;
 
             Panel container = new Panel
             {
-                Size = new Size(newWidth, panelHeight + label.Height),
+                Size = new Size(newWidth, panelHeight + label.Height + 8),
                 Margin = new Padding(10)
             };
 
@@ -108,7 +119,7 @@ namespace dyfilm_client_v2._0.forms
             container.Controls.Add(pictureBox);
             container.Controls.Add(label);
 
-            frame_flowLayoutPanel1.Controls.Add(container);
+            frame_flowLayoutPanel.Controls.Add(container);
         }
 
         private void Frame_MouseDown(object sender, MouseEventArgs e)
@@ -118,8 +129,8 @@ namespace dyfilm_client_v2._0.forms
                 isDragging = false;
                 wasDragged = false;
                 dragStartScreenPos = Control.MousePosition;
-                scrollStartX = -frame_flowLayoutPanel1.AutoScrollPosition.X;
-                frame_flowLayoutPanel1.Cursor = Cursors.Hand;
+                scrollStartX = -frame_flowLayoutPanel.AutoScrollPosition.X;
+                frame_flowLayoutPanel.Cursor = Cursors.Hand;
             }
         }
 
@@ -139,8 +150,8 @@ namespace dyfilm_client_v2._0.forms
                 if (isDragging)
                 {
                     int newX = scrollStartX - dx;
-                    newX = Math.Max(0, Math.Min(newX, frame_flowLayoutPanel1.HorizontalScroll.Maximum));
-                    frame_flowLayoutPanel1.AutoScrollPosition = new Point(newX, 0);
+                    newX = Math.Max(0, Math.Min(newX, frame_flowLayoutPanel.HorizontalScroll.Maximum));
+                    frame_flowLayoutPanel.AutoScrollPosition = new Point(newX, 0);
                 }
             }
         }
@@ -150,7 +161,7 @@ namespace dyfilm_client_v2._0.forms
             if (e.Button == MouseButtons.Left)
             {
                 isDragging = false;
-                frame_flowLayoutPanel1.Cursor = Cursors.Default;
+                frame_flowLayoutPanel.Cursor = Cursors.Default;
 
                 Task.Delay(100).ContinueWith(_ =>
                 {
@@ -164,16 +175,21 @@ namespace dyfilm_client_v2._0.forms
             this.Close();
         }
 
-        private void sel_frame_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // 추가 리소스 정리 필요 없음
-        }
-
         private void SetDoubleBuffered(Control control)
         {
             typeof(Control).InvokeMember("DoubleBuffered",
                 BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
                 null, control, new object[] { true });
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            confirm_frame.Visible = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            utils.info_msg(sel_f_id);
         }
     }
 }
