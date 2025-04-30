@@ -16,7 +16,8 @@ namespace dyfilm_client_v2._0.forms
         private bool wasDragged = false;
         private Point dragStartScreenPos;
         private int scrollStartX;
-        private string sel_f_id;
+        private string select_f_id;
+        private int select_frame_capture_count;
 
         public sel_frame()
         {
@@ -48,7 +49,7 @@ namespace dyfilm_client_v2._0.forms
                 if (File.Exists(frameImagePath))
                 {
                     Image image = Image.FromFile(frameImagePath);
-                    CreateFrameItem(image, frameDescription, item[0].ToString());
+                    CreateFrameItem(image, frameDescription, item[0].ToString(), capture_count);
                 }
             }
         }
@@ -69,7 +70,7 @@ namespace dyfilm_client_v2._0.forms
             frame_flowLayoutPanel.MouseUp += Frame_MouseUp;
         }
 
-        private void CreateFrameItem(Image img, string description, string f_id)
+        private void CreateFrameItem(Image img, string description, string f_id, int frame_capture_count)
         {
             int panelHeight = frame_flowLayoutPanel.ClientSize.Height - 120;
             int newWidth = (int)((float)panelHeight / img.Height * img.Width);
@@ -92,7 +93,8 @@ namespace dyfilm_client_v2._0.forms
                 {
                     confirm_frame.Visible = true;
                     pictureBox1.Image = img;
-                    sel_f_id = f_id;
+                    select_f_id = f_id;
+                    select_frame_capture_count = frame_capture_count;
                 }
             };
 
@@ -170,16 +172,16 @@ namespace dyfilm_client_v2._0.forms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void SetDoubleBuffered(Control control)
         {
             typeof(Control).InvokeMember("DoubleBuffered",
                 BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
                 null, control, new object[] { true });
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -190,7 +192,8 @@ namespace dyfilm_client_v2._0.forms
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-            camera_capture.sel_f_id = sel_f_id;
+            Temp.select_f_id = select_f_id;
+            Temp.select_frame_capture_count = select_frame_capture_count;
             new camera_capture().ShowDialog();
         }
     }

@@ -44,5 +44,27 @@ namespace dyfilm_client_v2._0
             }
             return null;
         }
+
+        public static async Task<byte[]> SendRequestAsync(HttpRequestMessage request)
+        {
+            try
+            {
+                var response = await instance.SendAsync(request);
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsByteArrayAsync();
+                }
+                else
+                {
+                    Console.WriteLine($"Request failed with status code: {response.StatusCode}");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception during request: {e}");
+            }
+            return null;
+        }
+
     }
 }

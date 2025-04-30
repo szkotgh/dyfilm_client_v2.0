@@ -6,10 +6,10 @@
       <Value Profile="(Default)">1.0</Value>
     </Setting>
     <Setting Name="auth_token" Type="System.String" Scope="User">
-      <Value Profile="(Default)">48637c6b0b3edab0f80d90ee6d7c8a0a</Value>
+      <Value Profile="(Default)">a0cf1af24a5789ef272d239e7e359a63</Value>
     </Setting>
     <Setting Name="process_url" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://film.szk.kr</Value>
+      <Value Profile="(Default)">https://film.dyhs.kr</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -28,75 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.live_pictureBox = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.title1 = new System.Windows.Forms.Label();
+            this.order_panel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.are_you_ready_panel = new System.Windows.Forms.Panel();
+            this.start_button = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.live_pictureBox)).BeginInit();
+            this.order_panel.SuspendLayout();
+            this.are_you_ready_panel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // live_pictureBox
+            // 
+            this.live_pictureBox.Location = new System.Drawing.Point(160, 143);
+            this.live_pictureBox.Name = "live_pictureBox";
+            this.live_pictureBox.Size = new System.Drawing.Size(1600, 783);
+            this.live_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.live_pictureBox.TabIndex = 1;
+            this.live_pictureBox.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(63, 367);
+            this.button1.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(1633, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(329, 172);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Size = new System.Drawing.Size(254, 90);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "처음으로";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // pictureBox1
+            // title1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(559, 88);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1187, 622);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.title1.AutoSize = true;
+            this.title1.BackColor = System.Drawing.Color.White;
+            this.title1.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.title1.Location = new System.Drawing.Point(42, 38);
+            this.title1.Name = "title1";
+            this.title1.Size = new System.Drawing.Size(580, 57);
+            this.title1.TabIndex = 5;
+            this.title1.Text = "촬영 시작 버튼을 눌러주세요.";
             // 
-            // button2
+            // order_panel
             // 
-            this.button2.Location = new System.Drawing.Point(559, 751);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(515, 94);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.order_panel.Controls.Add(this.label3);
+            this.order_panel.Controls.Add(this.label2);
+            this.order_panel.Controls.Add(this.label1);
+            this.order_panel.Location = new System.Drawing.Point(0, 956);
+            this.order_panel.Name = "order_panel";
+            this.order_panel.Size = new System.Drawing.Size(1920, 110);
+            this.order_panel.TabIndex = 8;
             // 
-            // button3
+            // label3
             // 
-            this.button3.Location = new System.Drawing.Point(1097, 751);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(515, 94);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.label3.BackColor = System.Drawing.Color.LightGray;
+            this.label3.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(1280, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(640, 100);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "3. 사진 인화";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.PaleGreen;
+            this.label2.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(640, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(640, 100);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "2. 사진 촬영";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label1.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(640, 100);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "1. 프레임 선택";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // are_you_ready_panel
+            // 
+            this.are_you_ready_panel.Controls.Add(this.start_button);
+            this.are_you_ready_panel.Location = new System.Drawing.Point(160, 143);
+            this.are_you_ready_panel.Name = "are_you_ready_panel";
+            this.are_you_ready_panel.Size = new System.Drawing.Size(1600, 783);
+            this.are_you_ready_panel.TabIndex = 9;
+            // 
+            // start_button
+            // 
+            this.start_button.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.start_button.Location = new System.Drawing.Point(345, 204);
+            this.start_button.Name = "start_button";
+            this.start_button.Size = new System.Drawing.Size(882, 348);
+            this.start_button.TabIndex = 0;
+            this.start_button.Text = "촬영 시작\r\n(10초 타이머 연속 n컷)";
+            this.start_button.UseVisualStyleBackColor = true;
+            this.start_button.Click += new System.EventHandler(this.button2_Click);
             // 
             // camera_capture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.are_you_ready_panel);
+            this.Controls.Add(this.order_panel);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.title1);
+            this.Controls.Add(this.live_pictureBox);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "camera_capture";
             this.Text = "camera_capture";
             this.Load += new System.EventHandler(this.camera_capture_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.live_pictureBox)).EndInit();
+            this.order_panel.ResumeLayout(false);
+            this.are_you_ready_panel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
+        private System.Windows.Forms.PictureBox live_pictureBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label title1;
+        private System.Windows.Forms.Panel order_panel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel are_you_ready_panel;
+        private System.Windows.Forms.Button start_button;
     }
 }

@@ -79,3 +79,10 @@ C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_c.CFFC3552.Up2Date
 C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2._0.forms.sel_frame.resources
 C:\Users\4070ti\Desktop\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.sel_frame.resources
 C:\Users\4070ti\Desktop\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.camera_capture.resources
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\bin\Debug\AForge.dll
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\bin\Debug\AForge.Video.dll
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\bin\Debug\AForge.xml
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\bin\Debug\AForge.Video.xml
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.create_capframe.resources
