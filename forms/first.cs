@@ -72,7 +72,7 @@ namespace dyfilm_client_v2._0.forms
 				title2.Text += "version=" + Config.version + '\n';
 				title2.Text += "auth_token=" + Config.auth_token + '\n';
 				title2.Text += "process_url=" + Config.process_url + "\n\n";
-				title2.Text += i + "초 뒤 실행됩니다.";
+				title2.Text += "잠시 후 자동으로 시작됩니다. (" + i + ")";
 				await Task.Delay(1000);
 			}
 
@@ -188,7 +188,7 @@ namespace dyfilm_client_v2._0.forms
 			while (progress_value < 100)
 			{
 				Random rand = new Random();
-				progress_value += rand.Next(1, 5);
+				progress_value += rand.Next(1, 10);
 				if (progress_value > 100)
 					progress_value = 100;
 
@@ -201,9 +201,9 @@ namespace dyfilm_client_v2._0.forms
 			await Task.Delay(2000);
 
 			title1.Text = "덕영필름 클라이언트(v" + Config.version + ")를 시작합니다.";
-			for (int i = 3; i > 0; i--)
+			for (int i = 5; i > 0; i--)
 			{
-				title2.Text = i + "초 뒤 실행됩니다.";
+				title2.Text = "프로그램을 종료하려면, 메인 화면을 3초 이상 눌렀다 떼십시오. (" + i + ")";
 				await Task.Delay(1000);
 			}
 

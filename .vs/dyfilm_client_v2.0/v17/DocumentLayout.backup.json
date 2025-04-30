@@ -11,7 +11,12 @@
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\first.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|dyfilm_client_v2.0||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\create_capframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\create_capframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -20,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\camera_capture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\camera_capture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\camera_capture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\camera_capture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\create_capframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\create_capframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\create_capframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,16 +55,8 @@
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:src\\icon.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:src\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|c:\\users\\gi679\\downloads\\dyfilm_client\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
-      "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -87,49 +76,14 @@
               "RelativeDocumentMoniker": "forms\\first.cs",
               "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\first.cs",
               "RelativeToolTip": "forms\\first.cs",
-              "ViewState": "AgIAAMAAAAAAAAAAAADwv88AAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAADwv0cAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T20:53:25.401Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dyfilm_client_v2.0",
-              "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\dyfilm_client_v2.0.csproj",
-              "RelativeDocumentMoniker": "dyfilm_client_v2.0.csproj",
-              "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\dyfilm_client_v2.0.csproj",
-              "RelativeToolTip": "dyfilm_client_v2.0.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-30T20:50:18.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Config.cs",
-              "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\config.cs",
-              "RelativeDocumentMoniker": "src\\config.cs",
-              "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\config.cs",
-              "RelativeToolTip": "src\\config.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwvxsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T20:30:56.415Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "camera_capture.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\camera_capture.cs",
-              "RelativeDocumentMoniker": "forms\\camera_capture.cs",
-              "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\camera_capture.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "forms\\camera_capture.cs [\uB514\uC790\uC778]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T20:02:01.893Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "Temp.cs",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\Temp.cs",
               "RelativeDocumentMoniker": "src\\Temp.cs",
@@ -141,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "DataStruct.cs",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\DataStruct.cs",
               "RelativeDocumentMoniker": "src\\DataStruct.cs",
@@ -153,14 +107,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "create_capframe.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\create_capframe.cs",
               "RelativeDocumentMoniker": "forms\\create_capframe.cs",
               "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\create_capframe.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "forms\\create_capframe.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T14:34:15.796Z"
+              "WhenOpened": "2025-04-30T14:34:15.796Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
             },
             {
               "$type": "Document",
@@ -176,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "sel_frame.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\sel_frame.cs",
               "RelativeDocumentMoniker": "forms\\sel_frame.cs",
@@ -187,7 +142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "sel_frame.cs",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\sel_frame.cs",
               "RelativeDocumentMoniker": "forms\\sel_frame.cs",
@@ -199,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "camera_capture.cs",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\camera_capture.cs",
               "RelativeDocumentMoniker": "forms\\camera_capture.cs",
@@ -207,11 +162,12 @@
               "RelativeToolTip": "forms\\camera_capture.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAAAvwGcAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:36:00.553Z"
+              "WhenOpened": "2025-04-30T18:36:00.553Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "create_capframe.cs",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\create_capframe.cs",
               "RelativeDocumentMoniker": "forms\\create_capframe.cs",
@@ -219,11 +175,36 @@
               "RelativeToolTip": "forms\\create_capframe.cs",
               "ViewState": "AgIAAHAAAAAAAAAAAAAkwI0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T14:34:17.574Z"
+              "WhenOpened": "2025-04-30T14:34:17.574Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
+              "Title": "main.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\main.cs",
+              "RelativeDocumentMoniker": "forms\\main.cs",
+              "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\main.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "forms\\main.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T14:42:56.272Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Config.cs",
+              "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\config.cs",
+              "RelativeDocumentMoniker": "src\\config.cs",
+              "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\config.cs",
+              "RelativeToolTip": "src\\config.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAADwvxsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T20:30:56.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "APIClient.cs",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\APIClient.cs",
               "RelativeDocumentMoniker": "src\\APIClient.cs",
@@ -235,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "icon.png - PNG [1772x1772, 24\uBE44\uD2B8, PNG]",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\icon.png",
               "RelativeDocumentMoniker": "src\\icon.png",
@@ -246,18 +227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "main.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\main.cs",
-              "RelativeDocumentMoniker": "forms\\main.cs",
-              "ToolTip": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\forms\\main.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "forms\\main.cs [\uB514\uC790\uC778]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T14:42:56.272Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "Utils.cs",
               "DocumentMoniker": "C:\\Users\\gi679\\Downloads\\dyfilm_client\\src\\Utils.cs",
               "RelativeDocumentMoniker": "src\\Utils.cs",
