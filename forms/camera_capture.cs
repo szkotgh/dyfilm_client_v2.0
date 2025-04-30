@@ -37,7 +37,7 @@ namespace dyfilm_client_v2._0.forms
                 return;
             }
 
-            videoSource = new VideoCaptureDevice(videoDevices[1].MonikerString); // 첫 번째 웹캠 선택
+            videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString); // 첫 번째
             videoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
             videoSource.Start();
         }

@@ -8,6 +8,7 @@ using dyfilm_client_v2._0.src;
 using System;
 using System.Linq;
 using System.Drawing;
+using System.Drawing.Printing;
 
 namespace dyfilm_client_v2._0.forms
 {
@@ -112,6 +113,21 @@ namespace dyfilm_client_v2._0.forms
 
                     result_pictureBox.Image = Image.FromFile(capframePath);
 
+                    // print capframe
+                    main_title.Text = "사진이 만들어졌어요! 출력 중입니다.";
+                    sub_title.Text = "프린터에 사진 출력 명령을 전송했습니다.";
+                    progressBar1.Style = ProgressBarStyle.Marquee;
+
+                    PrintImage(capframePath);
+
+                    main_title.Text = "프린터를 기다려 사진을 찾아가주세요.";
+                    label3.BackColor = Color.CornflowerBlue;
+                    for (int i = 10; i > 0; i--)
+                    {
+                        sub_title.Text = i + "초 뒤 초기 화면으로 이동합니다.";
+                        await Task.Delay(1000);
+                    }
+
                     break;
                 }
                 catch (Exception eee)
@@ -126,29 +142,38 @@ namespace dyfilm_client_v2._0.forms
                 }
             }
 
-
-            // print capframe
-            main_title.Text = "사진이 만들어졌어요! 출력 중입니다.";
-            sub_title.Text = "프린터를 찾고 있습니다..";
-            progressBar1.Style = ProgressBarStyle.Marquee;
-
-            await Task.Delay(2000);
-
-            sub_title.Text = "프린터에 사진 출력 명령을 전송 중입니다.";
-
-            await Task.Delay(4000);
-
-            main_title.Text = "프린터를 기다려 사진을 찾아가주세요.";
-            label3.BackColor = Color.CornflowerBlue;
-            for (int i = 10; i > 0; i--)
-            {
-                sub_title.Text = i + "초 뒤 초기 화면으로 이동합니다.";
-                await Task.Delay(1000);
-            }
-
             // 메인 화면으로 이동
             this.Close();
             return;
+        }
+        void PrintImage(string imagePath)
+        {
+            PrintDocument printDoc = new PrintDocument();
+
+            // 세로 용지 설정 (100 x 148mm = 400 x 584 hundredths of an inch)
+            printDoc.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+            printDoc.DefaultPageSettings.PaperSize = new PaperSize("SELPHY 4x6", 394, 584);
+
+            printDoc.PrintPage += (sender, e) =>
+            {
+                using (Image imgRaw = Image.FromFile(imagePath))
+                {
+                    Image img = (Image)imgRaw.Clone();
+
+                    // 가로 방향일 경우 회전
+                    if (img.Height > img.Width)
+                    {
+                        img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
+
+                    Rectangle bounds = e.PageBounds;
+                    e.Graphics.DrawImage(img, bounds);
+
+                    img.Dispose();
+                }
+            };
+
+            printDoc.Print();
         }
     }
 }

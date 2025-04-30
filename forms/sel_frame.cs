@@ -105,7 +105,7 @@ namespace dyfilm_client_v2._0.forms
                 Dock = DockStyle.Bottom,
                 AutoSize = false,
                 Height = 46,
-                Font = new Font("AppleSDGothicNeoEB00", 30, FontStyle.Bold)
+                Font = new Font("AppleSDGothicNeoEB00", 20, FontStyle.Bold)
             };
             label.MouseDown += Frame_MouseDown;
             label.MouseMove += Frame_MouseMove;
