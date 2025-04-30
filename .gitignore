@@ -1,2 +1,8 @@
 /src/EDSDK
 /bin/Debug/EDSDK.dll
+
+/bin/Debug/src/main_image.gif
+/bin/Debug/src/auth_result.json
+/bin/Debug/src/capframe/*
+/bin/Debug/src/capture/*
+/bin/Debug/src/frames/*

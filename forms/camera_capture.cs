@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Media;
 
 namespace dyfilm_client_v2._0.forms
 {
@@ -15,6 +16,7 @@ namespace dyfilm_client_v2._0.forms
         private FilterInfoCollection videoDevices;     // 연결된 모든 웹캠 목록
         private VideoCaptureDevice videoSource;        // 선택된 웹캠
         private CancellationTokenSource captureCancellation;
+        private SoundPlayer soundPlayer = new SoundPlayer(Path.Combine(Config.SHUTTER_SOUND_PATH));
 
         public camera_capture()
         {
@@ -23,18 +25,19 @@ namespace dyfilm_client_v2._0.forms
 
         private void camera_capture_Load(object sender, EventArgs e)
         {
-            start_button.Text = "촬영 시작하기\n[10초 타이머 " + Temp.select_frame_capture_count + "컷]";
-            Temp.select_c_id.Clear();
+            start_button.Text = "촬영 시작하기\n[" + Temp.select_frame_capture_count + "컷, 15초 타이머]";
+            Temp.capture_paths.Clear();
 
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
             if (videoDevices.Count == 0)
             {
-                Utils.warn_msg("웹캠이 연결되어 있지 않습니다.");
+                Utils.warn_msg("카메라 연결을 확인하십시오.\n사진을 촬영할 수 없습니다.");
+                this.Close();
                 return;
             }
 
-            videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString); // 첫 번째 웹캠 선택
+            videoSource = new VideoCaptureDevice(videoDevices[1].MonikerString); // 첫 번째 웹캠 선택
             videoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
             videoSource.Start();
         }
@@ -68,15 +71,23 @@ namespace dyfilm_client_v2._0.forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+            }
             this.Close();
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
             are_you_ready_panel.Visible = false;
+            timer_title.Visible = true;
+            index_title.Visible = true;
+            button1.Enabled = false;
 
             int captureCount = Temp.select_frame_capture_count;
-            int delayInSeconds = 10;
+            int delayInSeconds = 15;
 
             captureCancellation = new CancellationTokenSource();
 
@@ -86,27 +97,33 @@ namespace dyfilm_client_v2._0.forms
                 {
                     int photoIndex = i + 1;
 
-                    // 카운트다운: 10초 ~ 1초
                     for (int t = delayInSeconds; t > 0; t--)
                     {
+                        timer_title.BackColor = Color.Black;
+                        if (t <= 5)
+                            timer_title.BackColor = Color.Red;
+
                         UpdateTitleText($"{photoIndex}번째 사진 촬영 {t}초 전");
+                        timer_title.Text = t.ToString();
+                        index_title.Text = photoIndex.ToString();
                         await Task.Delay(1000, captureCancellation.Token);
                     }
 
-                    // 촬영 텍스트 표시
                     UpdateTitleText($"{photoIndex}번째 사진 촬영 됨");
-
-                    // 영상 정지
                     StopVideoFrame();
-
-                    // 촬영
                     SaveCurrentFrame();
+                    soundPlayer.Play();
 
-                    // 3초 대기 (영상 정지 상태)
                     await Task.Delay(3000, captureCancellation.Token);
 
-                    // 영상 재개
                     ResumeVideoFrame();
+                }
+
+                // Complete Capture
+                if (videoSource != null && videoSource.IsRunning)
+                {
+                    videoSource.SignalToStop();
+                    videoSource.WaitForStop();
                 }
 
                 UpdateTitleText("촬영 완료");
@@ -115,12 +132,11 @@ namespace dyfilm_client_v2._0.forms
             }
             catch (TaskCanceledException)
             {
-                MessageBox.Show("사진 촬영이 취소되었습니다.");
+                Utils.warn_msg("사진 촬영이 취소되었습니다.");
                 this.Close();
             }
         }
 
-        // UI 스레드 안전하게 title1.Text 갱신
         private void UpdateTitleText(string text)
         {
             if (title1.InvokeRequired)
@@ -133,7 +149,6 @@ namespace dyfilm_client_v2._0.forms
             }
         }
 
-        // 영상 정지
         private void StopVideoFrame()
         {
             if (videoSource != null)
@@ -142,7 +157,6 @@ namespace dyfilm_client_v2._0.forms
             }
         }
 
-        // 영상 재개
         private void ResumeVideoFrame()
         {
             if (videoSource != null)
@@ -151,8 +165,6 @@ namespace dyfilm_client_v2._0.forms
             }
         }
 
-
-
         private void SaveCurrentFrame()
         {
             if (live_pictureBox.Image != null)
@@ -160,10 +172,11 @@ namespace dyfilm_client_v2._0.forms
                 Bitmap bitmap = new Bitmap(live_pictureBox.Image);
 
                 string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string filename = $"{Temp.select_c_id}_{timestamp}.jpg";
+                string filename = $"{timestamp}.jpg";
                 string fullPath = Path.Combine(Config.CAPTURE_PATH, filename);
 
-                Directory.CreateDirectory(Config.CAPTURE_PATH); // 폴더 없을 시 생성
+                Temp.capture_paths.Add(fullPath);
+
                 bitmap.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
                 bitmap.Dispose();
             }

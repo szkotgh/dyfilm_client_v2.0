@@ -16,6 +16,7 @@ namespace dyfilm_client_v2._0.src
         public static string SOURCE_PATH = Path.Combine(HOME_PATH, "src");
         public static string EDSDK_PATH = Path.Combine(SOURCE_PATH, "EDSDK");
         public static string EDSDK_DLL_PATH = Path.Combine(EDSDK_PATH, "Dll", "EDSDK.dll");
+        public static string SHUTTER_SOUND_PATH = Path.Combine(SOURCE_PATH, "shutter3.wav");
 
         public static string MAIN_IMAGE_PATH = Path.Combine(SOURCE_PATH, "main_image.gif");
         public static string AUTH_RESULT_PATH = Path.Combine(SOURCE_PATH, "auth_result.json");
