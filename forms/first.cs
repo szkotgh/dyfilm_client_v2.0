@@ -18,7 +18,9 @@ namespace dyfilm_client_v2._0.forms
 {
 	public partial class first : dyfilm_client_v2._0.forms.Frame
 	{
-		public first()
+		private bool title_clicked = false;
+
+        public first()
 		{
 			InitializeComponent();
 		}
@@ -73,6 +75,7 @@ namespace dyfilm_client_v2._0.forms
 				title2.Text += "auth_token=" + Config.auth_token + '\n';
 				title2.Text += "process_url=" + Config.process_url + "\n\n";
 				title2.Text += "잠시 후 자동으로 시작됩니다. (" + i + ")";
+				if (title_clicked) break;
 				await Task.Delay(1000);
 			}
 
@@ -182,35 +185,44 @@ namespace dyfilm_client_v2._0.forms
 			// complete load data
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			title1.Text = "서버에서 데이터를 성공적으로 수신했습니다.";
-			title2.Text = "프로그램을 최적화 중입니다.";
-			set_progressbar(0);
-			int progress_value = 0;
-			while (progress_value < 100)
+			if (title_clicked == false)
 			{
-				Random rand = new Random();
-				progress_value += rand.Next(1, 10);
-				if (progress_value > 100)
-					progress_value = 100;
+				title2.Text = "프로그램을 최적화 중입니다.";
+				set_progressbar(0);
+				int progress_value = 0;
+				while (progress_value < 100)
+				{
+					Random rand = new Random();
+					progress_value += rand.Next(1, 10);
+					if (progress_value > 100)
+						progress_value = 100;
 
-				set_progressbar(progress_value);
-				await Task.Delay(rand.Next(1, 100));
+					set_progressbar(progress_value);
+					await Task.Delay(rand.Next(1, 100));
+				}
+				title2.Text = "최적화가 완료되었습니다.";
+				await Task.Delay(1000);
+				progressBar1.Style = ProgressBarStyle.Marquee;
+				await Task.Delay(2000);
 			}
-			title2.Text = "최적화가 완료되었습니다.";
-			await Task.Delay(1000);
-			progressBar1.Style = ProgressBarStyle.Marquee;
-			await Task.Delay(2000);
 
 			title1.Text = "덕영필름 클라이언트(v" + Config.version + ")를 시작합니다.";
 			for (int i = 5; i > 0; i--)
 			{
 				title2.Text = "프로그램을 종료하려면, 메인 화면을 3초 이상 눌렀다 떼십시오. (" + i + ")";
-				await Task.Delay(1000);
+                if (title_clicked) break;
+                await Task.Delay(1000);
 			}
 
 			main newMain = new main();
             newMain.Owner = this;
             newMain.Show();
             this.Hide();
+        }
+
+        private void title1_Click(object sender, EventArgs e)
+        {
+			title_clicked = true;
         }
     }
 }

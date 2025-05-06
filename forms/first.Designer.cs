@@ -43,6 +43,7 @@
             this.title1.Size = new System.Drawing.Size(176, 57);
             this.title1.TabIndex = 1;
             this.title1.Text = "TITLE 1";
+            this.title1.Click += new System.EventHandler(this.title1_Click);
             // 
             // title2
             // 

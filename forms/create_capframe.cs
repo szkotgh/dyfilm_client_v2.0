@@ -15,6 +15,10 @@ namespace dyfilm_client_v2._0.forms
     public partial class create_capframe : Frame
     {
         private List<string> upload_c_id = new List<string> { };
+        public static string cf_id = null;
+        public static bool is_capture = false;
+        public static int print_count = 1;
+        private int currentPage = 0;
 
         public create_capframe()
         {
@@ -26,82 +30,88 @@ namespace dyfilm_client_v2._0.forms
             while (true) {
                 string uploadUrl = Config.process_url + "/device/capture/regi_capture";
 
-                int index = 0;
-                int progress_ud_value = Convert.ToInt32(70 / Temp.capture_paths.Count);
-
                 try
                 {
-                    foreach (var path in Temp.capture_paths)
+                    if (cf_id == null)
                     {
-                        index++;
-                        sub_title.Text = $"서버에 사진을 전송하고 있습니다. ({index}/{Temp.capture_paths.Count})";
-                        progressBar1.Value = index * progress_ud_value;
+                        int index = 0;
+                        int progress_ud_value = Convert.ToInt32(70 / Temp.capture_paths.Count);
 
-                        byte[] imageData = File.ReadAllBytes(path);
-                        using (var content = new MultipartFormDataContent())
+                        foreach (var path in Temp.capture_paths)
                         {
-                            var imageContent = new ByteArrayContent(imageData);
-                            imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-                            content.Add(imageContent, "image", Path.GetFileName(path));
+                            index++;
+                            sub_title.Text = $"서버에 사진을 전송하고 있습니다. ({index}/{Temp.capture_paths.Count})";
+                            progressBar1.Value = index * progress_ud_value;
 
-                            using (var request = new HttpRequestMessage(HttpMethod.Post, uploadUrl))
+                            byte[] imageData = File.ReadAllBytes(path);
+                            using (var content = new MultipartFormDataContent())
                             {
-                                if (!string.IsNullOrEmpty(Properties.Settings.Default.auth_token))
-                                {
-                                    request.Headers.Authorization = new AuthenticationHeaderValue(Properties.Settings.Default.auth_token);
-                                }
+                                var imageContent = new ByteArrayContent(imageData);
+                                imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+                                content.Add(imageContent, "image", Path.GetFileName(path));
 
-                                request.Content = content;
-
-                                var responseBytes = await APIClient.SendRequestAsync(request);
-                                if (responseBytes == null)
+                                using (var request = new HttpRequestMessage(HttpMethod.Post, uploadUrl))
                                 {
-                                    throw new Exception("Capture 업로드에 실패했습니다. " + uploadUrl);
-                                }
-                                else
-                                {
-                                    string jsonString1 = System.Text.Encoding.UTF8.GetString(responseBytes);
-                                    var json1 = System.Text.Json.JsonDocument.Parse(jsonString1);
-                                    if (json1.RootElement.TryGetProperty("info", out var infoValue1))
+                                    if (!string.IsNullOrEmpty(Properties.Settings.Default.auth_token))
                                     {
-                                        upload_c_id.Add(infoValue1.GetString());
+                                        request.Headers.Authorization = new AuthenticationHeaderValue(Properties.Settings.Default.auth_token);
+                                    }
+
+                                    request.Content = content;
+
+                                    var responseBytes = await APIClient.SendRequestAsync(request);
+                                    if (responseBytes == null)
+                                    {
+                                        throw new Exception("Capture 업로드에 실패했습니다. " + uploadUrl);
+                                    }
+                                    else
+                                    {
+                                        string jsonString1 = System.Text.Encoding.UTF8.GetString(responseBytes);
+                                        var json1 = System.Text.Json.JsonDocument.Parse(jsonString1);
+                                        if (json1.RootElement.TryGetProperty("info", out var infoValue1))
+                                        {
+                                            upload_c_id.Add(infoValue1.GetString());
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
 
-                    sub_title.Text = "사진 제작 명령을 전송하고 있습니다.";
-                    progressBar1.Value = 85;
+                        sub_title.Text = "사진 제작 명령을 전송하고 있습니다.";
+                        progressBar1.Value = 85;
 
-                    // 캡프레임 생성 요청
-                    var formBody = new Dictionary<string, string>();
-                    for (int i = 0; i < upload_c_id.Count; i++)
-                    {
-                        formBody.Add($"c_id_{i + 1}", upload_c_id[i]);
-                    }
-                    formBody.Add("f_id", Temp.select_f_id);
+                        // 캡프레임 생성 요청
+                        var formBody = new Dictionary<string, string>();
+                        for (int i = 0; i < upload_c_id.Count; i++)
+                        {
+                            formBody.Add($"c_id_{i + 1}", upload_c_id[i]);
+                        }
+                        formBody.Add("f_id", Temp.select_f_id);
 
-                    string capframeUrl = Config.process_url + "/device/capframe/capframe_create";
-                    var response2 = await APIClient.RequestFormAsync(capframeUrl, formBody);
-                    if (response2 == null)
-                    {
-                        throw new Exception("CapFrame 생성 요청에 실패했습니다. url=" + capframeUrl + " params=" + string.Join(", ", formBody.Select(kv => $"{kv.Key}: {kv.Value}")));
-                    }
+                        string capframeUrl = Config.process_url + "/device/capframe/capframe_create";
+                        var response2 = await APIClient.RequestFormAsync(capframeUrl, formBody);
+                        if (response2 == null)
+                        {
+                            throw new Exception("CapFrame 생성 요청에 실패했습니다. url=" + capframeUrl + " params=" + string.Join(", ", formBody.Select(kv => $"{kv.Key}: {kv.Value}")));
+                        }
 
-                    string cf_id = null;
-                    string jsonString = System.Text.Encoding.UTF8.GetString(response2);
-                    var json = System.Text.Json.JsonDocument.Parse(jsonString);
-                    if (json.RootElement.TryGetProperty("info", out var infoValue))
-                    {
-                        cf_id = infoValue.GetString();
+                        string jsonString = System.Text.Encoding.UTF8.GetString(response2);
+                        var json = System.Text.Json.JsonDocument.Parse(jsonString);
+                        if (json.RootElement.TryGetProperty("info", out var infoValue))
+                        {
+                            cf_id = infoValue.GetString();
+                        }
                     }
 
                     sub_title.Text = "제작된 사진을 받아오고 있습니다.";
                     progressBar1.Value = 100;
 
+                    string capframeGetUrl;
+                    if (is_capture)
+                        capframeGetUrl = Config.process_url + "/device/capture/capture_get?c_id=" + cf_id;
+                    else
+                        capframeGetUrl = Config.process_url + "/device/capframe/capframe_get?cf_id=" + cf_id;
 
-                    string capframeGetUrl = Config.process_url + "/device/capframe/capframe_get?cf_id=" + cf_id;
                     var response3 = await APIClient.RequestAsync(capframeGetUrl, method: "GET");
                     if (response3 == null)
                     {
@@ -146,13 +156,12 @@ namespace dyfilm_client_v2._0.forms
             this.Close();
             return;
         }
-        void PrintImage(string imagePath)
+        public void PrintImage(string imagePath)
         {
             PrintDocument printDoc = new PrintDocument();
-
-            // 세로 용지 설정 (100 x 148mm = 400 x 584 hundredths of an inch)
+                
             printDoc.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
-            printDoc.DefaultPageSettings.PaperSize = new PaperSize("SELPHY 4x6", 394, 584);
+            printDoc.DefaultPageSettings.PaperSize = new PaperSize("SELPHY 4x6", 394, 583);
 
             printDoc.PrintPage += (sender, e) =>
             {
@@ -160,19 +169,50 @@ namespace dyfilm_client_v2._0.forms
                 {
                     Image img = (Image)imgRaw.Clone();
 
-                    // 가로 방향일 경우 회전
+                    // 세로 이미지면 회전
                     if (img.Height > img.Width)
                     {
                         img.RotateFlip(RotateFlipType.Rotate90FlipNone);
                     }
 
+                    // 이미지와 페이지 크기 계산
                     Rectangle bounds = e.PageBounds;
-                    e.Graphics.DrawImage(img, bounds);
+
+                    float printableWidth = bounds.Width;
+                    float printableHeight = bounds.Height;
+
+                    float imgAspect = (float)img.Width / img.Height;
+                    float paperAspect = printableWidth / printableHeight;
+
+                    float drawWidth, drawHeight;
+                    float offsetX = 0, offsetY = 0;
+
+                    if (imgAspect > paperAspect)
+                    {
+                        // 이미지가 더 가로로 김 → 폭을 맞추고, 높이는 비례
+                        drawWidth = printableWidth;
+                        drawHeight = printableWidth / imgAspect;
+                        offsetY = (printableHeight - drawHeight) / 2;
+                    }
+                    else
+                    {
+                        // 이미지가 더 세로로 김 → 높이를 맞추고, 폭은 비례
+                        drawHeight = printableHeight;
+                        drawWidth = printableHeight * imgAspect;
+                        offsetX = (printableWidth - drawWidth) / 2;
+                    }
+
+                    RectangleF drawRect = new RectangleF(offsetX, offsetY, drawWidth, drawHeight);
+                    e.Graphics.DrawImage(img, drawRect);
 
                     img.Dispose();
                 }
+
+                currentPage++;
+                e.HasMorePages = currentPage < print_count;
             };
 
+            currentPage = 0;
             printDoc.Print();
         }
     }

@@ -25,7 +25,7 @@ namespace dyfilm_client_v2._0.forms
 
         private void camera_capture_Load(object sender, EventArgs e)
         {
-            start_button.Text = "촬영 시작하기\n[" + Temp.select_frame_capture_count + "컷, 15초 타이머]";
+            start_button.Text = "촬영 시작하기\n[" + Temp.select_frame_capture_count + "컷, 10초 타이머]";
             Temp.capture_paths.Clear();
 
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -87,7 +87,7 @@ namespace dyfilm_client_v2._0.forms
             button1.Enabled = false;
 
             int captureCount = Temp.select_frame_capture_count;
-            int delayInSeconds = 15;
+            int delayInSeconds = 10;
 
             captureCancellation = new CancellationTokenSource();
 
@@ -127,6 +127,9 @@ namespace dyfilm_client_v2._0.forms
                 }
 
                 UpdateTitleText("촬영 완료");
+                create_capframe.cf_id = null;
+                create_capframe.is_capture = false;
+                create_capframe.print_count = 1;
                 new create_capframe().ShowDialog();
                 this.Close();
             }

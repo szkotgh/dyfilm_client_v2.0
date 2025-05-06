@@ -94,3 +94,4 @@ C:\Users\gi679\Downloads\dyfilm_client\bin\Debug\AForge.Video.xml
 C:\Users\gi679\Downloads\dyfilm_client\bin\Debug\AForge.Video.DirectShow.xml
 C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2._0.forms.camera_capture.resources
 C:\Users\gi679\Downloads\dyfilm_client\obj\Debug\dyfilm_client_v2._0.forms.create_capframe.resources
+C:\Users\4070ti\Desktop\dyfilm_client_v2.0\obj\Debug\dyfilm_client_v2._0.forms.capframe_print.resources

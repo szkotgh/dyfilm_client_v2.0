@@ -62,5 +62,10 @@ namespace dyfilm_client_v2._0.forms
         {
             admin_panel.Visible = false;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new capframe_print().ShowDialog();
+        }
     }
 }

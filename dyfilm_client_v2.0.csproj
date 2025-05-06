@@ -108,6 +108,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="forms\capframe_print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\capframe_print.Designer.cs">
+      <DependentUpon>capframe_print.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\create_capframe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     <Compile Include="src\WebCam.cs" />
     <EmbeddedResource Include="forms\camera_capture.resx">
       <DependentUpon>camera_capture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\capframe_print.resx">
+      <DependentUpon>capframe_print.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\create_capframe.resx">
       <DependentUpon>create_capframe.cs</DependentUpon>
