@@ -5,4 +5,5 @@
 /bin/Debug/src/auth_result.json
 /bin/Debug/src/capframe/*
 /bin/Debug/src/capture/*
+/bin/Debug/src/frames/info.json
 /bin/Debug/src/frames/*
