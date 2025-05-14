@@ -30,10 +30,10 @@
         {
             this.touchpictureBox1 = new System.Windows.Forms.PictureBox();
             this.admin_panel = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.touchpictureBox1)).BeginInit();
             this.admin_panel.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,16 @@
             this.admin_panel.Size = new System.Drawing.Size(1920, 124);
             this.admin_panel.TabIndex = 1;
             this.admin_panel.Visible = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(575, 22);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(257, 74);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "추가 인쇄";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -91,16 +101,6 @@
             this.button1.Text = "프로그램 종료";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(575, 22);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(257, 74);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "CapFrame 추가 인쇄";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // main
             // 

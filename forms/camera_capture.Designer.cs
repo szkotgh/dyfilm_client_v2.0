@@ -49,7 +49,7 @@
             this.index_title.BackColor = System.Drawing.Color.Black;
             this.index_title.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 68.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.index_title.ForeColor = System.Drawing.Color.White;
-            this.index_title.Location = new System.Drawing.Point(1778, 400);
+            this.index_title.Location = new System.Drawing.Point(0, 400);
             this.index_title.Name = "index_title";
             this.index_title.Size = new System.Drawing.Size(142, 154);
             this.index_title.TabIndex = 11;
@@ -62,7 +62,7 @@
             this.timer_title.BackColor = System.Drawing.Color.Black;
             this.timer_title.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 68.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.timer_title.ForeColor = System.Drawing.Color.White;
-            this.timer_title.Location = new System.Drawing.Point(0, 400);
+            this.timer_title.Location = new System.Drawing.Point(1778, 400);
             this.timer_title.Name = "timer_title";
             this.timer_title.Size = new System.Drawing.Size(142, 154);
             this.timer_title.TabIndex = 10;
@@ -140,13 +140,14 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.Location = new System.Drawing.Point(1633, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(254, 90);
             this.button1.TabIndex = 6;
             this.button1.Text = "처음으로";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // title1
@@ -174,8 +175,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.index_title);
             this.Controls.Add(this.timer_title);
+            this.Controls.Add(this.index_title);
             this.Controls.Add(this.are_you_ready_panel);
             this.Controls.Add(this.order_panel);
             this.Controls.Add(this.button1);

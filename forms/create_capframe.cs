@@ -83,9 +83,7 @@ namespace dyfilm_client_v2._0.forms
                         // 캡프레임 생성 요청
                         var formBody = new Dictionary<string, string>();
                         for (int i = 0; i < upload_c_id.Count; i++)
-                        {
                             formBody.Add($"c_id_{i + 1}", upload_c_id[i]);
-                        }
                         formBody.Add("f_id", Temp.select_f_id);
 
                         string capframeUrl = Config.process_url + "/device/capframe/capframe_create";
@@ -121,12 +119,13 @@ namespace dyfilm_client_v2._0.forms
                     string capframePath = Path.Combine(Config.FRAME_PATH, cf_id + ".png");
                     File.WriteAllBytes(capframePath, response3);
 
+                    // printing
                     result_pictureBox.Image = Image.FromFile(capframePath);
-
-                    // print capframe
-                    main_title.Text = "사진이 만들어졌어요! 출력 중입니다.";
-                    sub_title.Text = "프린터에 사진 출력 명령을 전송했습니다.";
                     progressBar1.Style = ProgressBarStyle.Marquee;
+                    title1.Text = "사진이 완성되었습니다.";
+                    main_title.Text = "출력 중입니다.";
+                    sub_title.Text = "프린터에 사진 출력 명령을 전송했습니다.";
+                    await Task.Delay(100);
 
                     PrintImage(capframePath);
 
@@ -175,7 +174,6 @@ namespace dyfilm_client_v2._0.forms
                         img.RotateFlip(RotateFlipType.Rotate90FlipNone);
                     }
 
-                    // 이미지와 페이지 크기 계산
                     Rectangle bounds = e.PageBounds;
 
                     float printableWidth = bounds.Width;
@@ -189,14 +187,14 @@ namespace dyfilm_client_v2._0.forms
 
                     if (imgAspect > paperAspect)
                     {
-                        // 이미지가 더 가로로 김 → 폭을 맞추고, 높이는 비례
+                        // 이미지가 가로로 김: 폭을 맞추고, 높이는 비례
                         drawWidth = printableWidth;
                         drawHeight = printableWidth / imgAspect;
                         offsetY = (printableHeight - drawHeight) / 2;
                     }
                     else
                     {
-                        // 이미지가 더 세로로 김 → 높이를 맞추고, 폭은 비례
+                        // 이미지가 세로로 김: 높이를 맞추고, 폭은 비례
                         drawHeight = printableHeight;
                         drawWidth = printableHeight * imgAspect;
                         offsetX = (printableWidth - drawWidth) / 2;

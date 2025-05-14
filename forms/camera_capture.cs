@@ -69,13 +69,19 @@ namespace dyfilm_client_v2._0.forms
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private async void button1_Click_1(object sender, EventArgs e)
         {
+            if (captureCancellation != null && !captureCancellation.Token.IsCancellationRequested)
+            {
+                captureCancellation.Cancel();
+            }
+
             if (videoSource != null && videoSource.IsRunning)
             {
                 videoSource.SignalToStop();
                 videoSource.WaitForStop();
             }
+
             this.Close();
         }
 
@@ -84,7 +90,6 @@ namespace dyfilm_client_v2._0.forms
             are_you_ready_panel.Visible = false;
             timer_title.Visible = true;
             index_title.Visible = true;
-            button1.Enabled = false;
 
             int captureCount = Temp.select_frame_capture_count;
             int delayInSeconds = 10;
@@ -107,6 +112,11 @@ namespace dyfilm_client_v2._0.forms
                         timer_title.Text = t.ToString();
                         index_title.Text = photoIndex.ToString();
                         await Task.Delay(1000, captureCancellation.Token);
+
+                        if (captureCancellation.Token.IsCancellationRequested)
+                        {
+                            throw new TaskCanceledException();
+                        }
                     }
 
                     UpdateTitleText($"{photoIndex}번째 사진 촬영 됨");
@@ -114,12 +124,17 @@ namespace dyfilm_client_v2._0.forms
                     SaveCurrentFrame();
                     soundPlayer.Play();
 
-                    await Task.Delay(3000, captureCancellation.Token);
+                    await Task.Delay(1500, captureCancellation.Token);
+
+                    if (captureCancellation.Token.IsCancellationRequested)
+                    {
+                        throw new TaskCanceledException();
+                    }
 
                     ResumeVideoFrame();
                 }
 
-                // Complete Capture
+                // complete capture
                 if (videoSource != null && videoSource.IsRunning)
                 {
                     videoSource.SignalToStop();
@@ -139,6 +154,7 @@ namespace dyfilm_client_v2._0.forms
                 this.Close();
             }
         }
+
 
         private void UpdateTitleText(string text)
         {

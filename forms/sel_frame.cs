@@ -19,6 +19,9 @@ namespace dyfilm_client_v2._0.forms
         private string select_f_id;
         private int select_frame_capture_count;
 
+        private Panel overlayPanel;  // 전체를 덮을 Panel
+        private Label dragTextLabel;  // "좌우로 드래그" 텍스트를 표시할 Label
+
         public sel_frame()
         {
             InitializeComponent();
@@ -28,17 +31,14 @@ namespace dyfilm_client_v2._0.forms
 
         private void sel_frame_Load(object sender, EventArgs e)
         {
-
             string frameInfoText = File.ReadAllText(Config.FRAME_INFO_PATH);
             FrameInfo frameInfo = JsonSerializer.Deserialize<FrameInfo>(frameInfoText);
 
             foreach (var item in frameInfo.info)
             {
-                // status False(0): skip
                 if (item[1].ToString() == "0")
                     continue;
 
-                // status True(1): Add Image
                 string frame_count = item[3].ToString();
                 DataStruct.Frame frame_info_json = JsonSerializer.Deserialize<DataStruct.Frame>(frame_count);
                 int capture_count = frame_info_json.captures.Count;
@@ -70,6 +70,11 @@ namespace dyfilm_client_v2._0.forms
             frame_flowLayoutPanel.MouseUp += Frame_MouseUp;
         }
 
+        private void DragTextLabel_MouseDown(object sender, MouseEventArgs e)
+        {
+            overlayPanel.Visible = false;
+        }
+
         private void CreateFrameItem(Image img, string description, string f_id, int frame_capture_count)
         {
             int panelHeight = frame_flowLayoutPanel.ClientSize.Height - 120;
@@ -84,9 +89,9 @@ namespace dyfilm_client_v2._0.forms
                 Cursor = Cursors.Hand
             };
 
-            pictureBox.MouseDown  += Frame_MouseDown;
-            pictureBox.MouseMove  += Frame_MouseMove;
-            pictureBox.MouseUp    += Frame_MouseUp;
+            pictureBox.MouseDown += Frame_MouseDown;
+            pictureBox.MouseMove += Frame_MouseMove;
+            pictureBox.MouseUp += Frame_MouseUp;
             pictureBox.MouseClick += (s, e) =>
             {
                 if (!wasDragged)
@@ -109,7 +114,7 @@ namespace dyfilm_client_v2._0.forms
             };
             label.MouseDown += Frame_MouseDown;
             label.MouseMove += Frame_MouseMove;
-            label.MouseUp   += Frame_MouseUp;
+            label.MouseUp += Frame_MouseUp;
 
             Panel container = new Panel
             {
