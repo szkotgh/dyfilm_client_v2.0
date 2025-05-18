@@ -67,5 +67,10 @@ namespace dyfilm_client_v2._0.forms
         {
             new capframe_print().ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("cmd.exe", "/c shutdown /s /t 0");
+        }
     }
 }
