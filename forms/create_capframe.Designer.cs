@@ -83,6 +83,7 @@
             this.sub_title.Size = new System.Drawing.Size(321, 39);
             this.sub_title.TabIndex = 9;
             this.sub_title.Text = "사진을 만들고 있습니다.";
+            this.sub_title.Click += new System.EventHandler(this.sub_title_Click);
             // 
             // progressBar1
             // 

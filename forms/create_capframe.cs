@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Linq.Expressions;
 
 namespace dyfilm_client_v2._0.forms
 {
@@ -19,10 +20,12 @@ namespace dyfilm_client_v2._0.forms
         public static bool is_capture = false;
         public static int print_count = 1;
         private int currentPage = 0;
+        private bool is_skiped = false;
 
         public create_capframe()
         {
             InitializeComponent();
+            this.is_skiped = false;
         }
 
         private async void create_capframe_Load(object sender, EventArgs e)
@@ -133,6 +136,10 @@ namespace dyfilm_client_v2._0.forms
                     label3.BackColor = Color.CornflowerBlue;
                     for (int i = 10; i > 0; i--)
                     {
+                        if (this.is_skiped)
+                        {
+                            break;
+                        }
                         sub_title.Text = i + "초 뒤 초기 화면으로 이동합니다.";
                         await Task.Delay(1000);
                     }
@@ -212,6 +219,11 @@ namespace dyfilm_client_v2._0.forms
 
             currentPage = 0;
             printDoc.Print();
+        }
+
+        private void sub_title_Click(object sender, EventArgs e)
+        {
+            this.is_skiped = true;
         }
     }
 }
