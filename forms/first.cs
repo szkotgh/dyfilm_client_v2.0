@@ -162,7 +162,7 @@ namespace dyfilm_client_v2._0.forms
 				if (item[1].ToString() == "0")
 				{
 					title2.Text += " 비활성화된 프레임. 수신을 건너뜁니다 . . .";
-					await Task.Delay(1000);
+					await Task.Delay(300);
 					continue;
 				}
 
