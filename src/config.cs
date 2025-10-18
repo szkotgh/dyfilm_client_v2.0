@@ -14,8 +14,6 @@ namespace dyfilm_client_v2._0.src
         public static string HOME_PATH = Application.StartupPath;
 
         public static string SOURCE_PATH = Path.Combine(HOME_PATH, "src");
-        public static string EDSDK_PATH = Path.Combine(SOURCE_PATH, "EDSDK");
-        public static string EDSDK_DLL_PATH = Path.Combine(EDSDK_PATH, "Dll", "EDSDK.dll");
         public static string SHUTTER_SOUND_PATH = Path.Combine(SOURCE_PATH, "shutter3.wav");
 
         public static string MAIN_IMAGE_PATH = Path.Combine(SOURCE_PATH, "main_image.gif");
@@ -28,8 +26,8 @@ namespace dyfilm_client_v2._0.src
 
         public static string CAPFRAME_PATH = Path.Combine(SOURCE_PATH, "capframe");
 
-        // Properties Variable
-        public static string version;
+        // Setting variables
+        public static string version = "1.6";
         public static string auth_token;
         public static string process_url;
 
@@ -50,9 +48,10 @@ namespace dyfilm_client_v2._0.src
 
         public static void properties_init()
         {
-            version = Properties.Settings.Default.version;
-            auth_token = Properties.Settings.Default.auth_token;
-            process_url = Properties.Settings.Default.process_url;
+            // ConfigManager를 사용하여 설정 로드
+            ConfigManager.LoadConfig();
+            auth_token = ConfigManager.GetValue("auth_token");
+            process_url = ConfigManager.GetValue("process_url");
         }
     }
 }

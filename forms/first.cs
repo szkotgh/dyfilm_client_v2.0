@@ -16,9 +16,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace dyfilm_client_v2._0.forms
 {
-	public partial class first : dyfilm_client_v2._0.forms.Frame
-	{
-		private bool title_clicked = false;
+    public partial class first : dyfilm_client_v2._0.forms.Frame
+    {
+        private bool title_clicked = false;
+        private CancellationTokenSource cancellationTokenSource;
 
         public first()
 		{
@@ -64,6 +65,14 @@ namespace dyfilm_client_v2._0.forms
 			}
 			Config.dir_init();
 
+			// Start timer
+			await StartLoadingSequence();
+		}
+
+		private async Task StartLoadingSequence()
+		{
+			cancellationTokenSource = new CancellationTokenSource();
+			
 			// first start delay (10 second)
 			//set_progressbar(10);
 			progressBar1.Style = ProgressBarStyle.Marquee;
@@ -76,7 +85,15 @@ namespace dyfilm_client_v2._0.forms
 				title2.Text += "process_url=" + Config.process_url + "\n\n";
 				title2.Text += "잠시 후 자동으로 시작됩니다. (" + i + ")";
 				if (title_clicked) break;
-				await Task.Delay(1000);
+				
+				try
+				{
+					await Task.Delay(1000, cancellationTokenSource.Token);
+				}
+				catch (OperationCanceledException)
+				{
+					break;
+				}
 			}
 
 			// check device enable
@@ -211,7 +228,15 @@ namespace dyfilm_client_v2._0.forms
 			{
 				title2.Text = "프로그램을 종료하려면, 메인 화면을 3초 이상 눌렀다 떼십시오. (" + i + ")";
                 if (title_clicked) break;
-                await Task.Delay(1000);
+                
+                try
+                {
+                    await Task.Delay(1000, cancellationTokenSource.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
 			}
 
 			main newMain = new main();
@@ -223,6 +248,12 @@ namespace dyfilm_client_v2._0.forms
         private void title1_Click(object sender, EventArgs e)
         {
 			title_clicked = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Navigate to settings page
+            new settings().ShowDialog();
         }
     }
 }

@@ -55,9 +55,9 @@ namespace dyfilm_client_v2._0.forms
 
                                 using (var request = new HttpRequestMessage(HttpMethod.Post, uploadUrl))
                                 {
-                                    if (!string.IsNullOrEmpty(Properties.Settings.Default.auth_token))
+                                    if (!string.IsNullOrEmpty(Config.auth_token))
                                     {
-                                        request.Headers.Authorization = new AuthenticationHeaderValue(Properties.Settings.Default.auth_token);
+                                        request.Headers.Authorization = new AuthenticationHeaderValue(Config.auth_token);
                                     }
 
                                     request.Content = content;
@@ -165,9 +165,11 @@ namespace dyfilm_client_v2._0.forms
         public void PrintImage(string imagePath)
         {
             PrintDocument printDoc = new PrintDocument();
-                
-            printDoc.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
-            printDoc.DefaultPageSettings.PaperSize = new PaperSize("SELPHY 4x6", 394, 583);
+            
+            // Apply settings based on configured printer type
+            PrinterConfig.PrinterType printerType = PrinterConfig.GetCurrentPrinterType();
+            printDoc.DefaultPageSettings.Margins = PrinterConfig.GetMargins(printerType);
+            printDoc.DefaultPageSettings.PaperSize = PrinterConfig.GetPaperSize(printerType);
 
             printDoc.PrintPage += (sender, e) =>
             {
@@ -175,39 +177,14 @@ namespace dyfilm_client_v2._0.forms
                 {
                     Image img = (Image)imgRaw.Clone();
 
-                    // 세로 이미지면 회전
-                    if (img.Height > img.Width)
+                    // Determine image rotation based on printer type
+                    if (PrinterConfig.ShouldRotateImage(printerType) && img.Height > img.Width)
                     {
                         img.RotateFlip(RotateFlipType.Rotate90FlipNone);
                     }
 
                     Rectangle bounds = e.PageBounds;
-
-                    float printableWidth = bounds.Width;
-                    float printableHeight = bounds.Height;
-
-                    float imgAspect = (float)img.Width / img.Height;
-                    float paperAspect = printableWidth / printableHeight;
-
-                    float drawWidth, drawHeight;
-                    float offsetX = 0, offsetY = 0;
-
-                    if (imgAspect > paperAspect)
-                    {
-                        // 이미지가 가로로 김: 폭을 맞추고, 높이는 비례
-                        drawWidth = printableWidth;
-                        drawHeight = printableWidth / imgAspect;
-                        offsetY = (printableHeight - drawHeight) / 2;
-                    }
-                    else
-                    {
-                        // 이미지가 세로로 김: 높이를 맞추고, 폭은 비례
-                        drawHeight = printableHeight;
-                        drawWidth = printableHeight * imgAspect;
-                        offsetX = (printableWidth - drawWidth) / 2;
-                    }
-
-                    RectangleF drawRect = new RectangleF(offsetX, offsetY, drawWidth, drawHeight);
+                    RectangleF drawRect = PrinterConfig.CalculateImageBounds(printerType, img, bounds);
                     e.Graphics.DrawImage(img, drawRect);
 
                     img.Dispose();

@@ -120,8 +120,9 @@
     <Compile Include="forms\create_capframe.Designer.cs">
       <DependentUpon>create_capframe.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="src\APIClient.cs" />
+    <Compile Include="src\ConfigManager.cs" />
+    <Compile Include="src\PrinterConfig.cs" />
     <Compile Include="forms\camera_capture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +146,12 @@
     </Compile>
     <Compile Include="forms\sel_frame.Designer.cs">
       <DependentUpon>sel_frame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\settings.Designer.cs">
+      <DependentUpon>settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Frame.cs">
       <SubType>Form</SubType>
@@ -178,6 +185,9 @@
     <EmbeddedResource Include="forms\sel_frame.resx">
       <DependentUpon>sel_frame.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\settings.resx">
+      <DependentUpon>settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frame.resx">
       <DependentUpon>Frame.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,16 +201,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <None Include="src\EDSDK\Library\EDSDK.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -219,11 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <Content Include="src\EDSDK\Dll\EDSDK.dll" />
-    <Content Include="src\EDSDK\Dll\EdsImage.dll" />
-    <Content Include="src\EDSDK\Header\EDSDK.h" />
-    <Content Include="src\EDSDK\Header\EDSDKErrors.h" />
-    <Content Include="src\EDSDK\Header\EDSDKTypes.h" />
     <Content Include="src\icon.png" />
   </ItemGroup>
   <ItemGroup />

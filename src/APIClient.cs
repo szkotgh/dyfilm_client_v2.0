@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using dyfilm_client_v2._0.src;
 
 namespace dyfilm_client_v2._0
 {
@@ -19,9 +20,9 @@ namespace dyfilm_client_v2._0
                 using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, url))
                 {
                     // Authorization 헤더 추가
-                    if (!string.IsNullOrEmpty(Properties.Settings.Default.auth_token))
+                    if (!string.IsNullOrEmpty(Config.auth_token))
                     {
-                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(Properties.Settings.Default.auth_token);
+                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(Config.auth_token);
                     }
 
                     // form-urlencoded 형식으로 Content 설정
@@ -52,9 +53,9 @@ namespace dyfilm_client_v2._0
             {
                 using (var requestMessage = new HttpRequestMessage(new HttpMethod(method), url))
                 {
-                    if (!string.IsNullOrEmpty(Properties.Settings.Default.auth_token))
+                    if (!string.IsNullOrEmpty(Config.auth_token))
                     {
-                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(Properties.Settings.Default.auth_token);
+                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(Config.auth_token);
                     }
 
                     if (method.ToUpper() == "POST" && postData != null)

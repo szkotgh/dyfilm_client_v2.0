@@ -31,6 +31,7 @@
             this.title1 = new System.Windows.Forms.Label();
             this.title2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title1
@@ -66,10 +67,22 @@
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 3;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(62, 597);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(305, 87);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "설정으로";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // first
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.title2);
             this.Controls.Add(this.title1);
@@ -86,5 +99,6 @@
         private System.Windows.Forms.Label title1;
         private System.Windows.Forms.Label title2;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button1;
     }
 }

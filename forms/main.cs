@@ -72,5 +72,10 @@ namespace dyfilm_client_v2._0.forms
         {
             System.Diagnostics.Process.Start("cmd.exe", "/c shutdown /s /t 0");
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            new settings().ShowDialog();
+        }
     }
 }
