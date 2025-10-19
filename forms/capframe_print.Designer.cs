@@ -194,6 +194,7 @@
             this.Controls.Add(this.title1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "capframe_print";
+            this.ShowInTaskbar = false;
             this.Text = "capframe_print";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

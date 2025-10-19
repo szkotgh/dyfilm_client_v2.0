@@ -124,15 +124,15 @@ namespace dyfilm_client_v2._0.forms
 
                     // printing
                     result_pictureBox.Image = Image.FromFile(capframePath);
-                    progressBar1.Style = ProgressBarStyle.Marquee;
                     title1.Text = "사진이 완성되었습니다.";
                     main_title.Text = "출력 중입니다.";
                     sub_title.Text = "프린터에 사진 출력 명령을 전송했습니다.";
                     await Task.Delay(100);
 
                     PrintImage(capframePath);
+                    progressBar1.Style = ProgressBarStyle.Marquee;
 
-                    main_title.Text = "프린터를 기다려 사진을 찾아가주세요.";
+                    main_title.Text = "프린터에서 사진을 찾아가주세요.";
                     label3.BackColor = Color.CornflowerBlue;
                     for (int i = 10; i > 0; i--)
                     {
@@ -162,6 +162,7 @@ namespace dyfilm_client_v2._0.forms
             this.Close();
             return;
         }
+        
         public void PrintImage(string imagePath)
         {
             PrintDocument printDoc = new PrintDocument();
@@ -185,6 +186,65 @@ namespace dyfilm_client_v2._0.forms
 
                     Rectangle bounds = e.PageBounds;
                     RectangleF drawRect = PrinterConfig.CalculateImageBounds(printerType, img, bounds);
+                    e.Graphics.DrawImage(img, drawRect);
+
+                    img.Dispose();
+                }
+
+                currentPage++;
+                e.HasMorePages = currentPage < print_count;
+            };
+
+            currentPage = 0;
+            printDoc.Print();
+        }
+
+        public void PrinTtImage(string imagePath)
+        {
+            PrintDocument printDoc = new PrintDocument();
+                
+            printDoc.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+            printDoc.DefaultPageSettings.PaperSize = new PaperSize("SELPHY 4x6", 394, 583);
+
+            printDoc.PrintPage += (sender, e) =>
+            {
+                using (Image imgRaw = Image.FromFile(imagePath))
+                {
+                    Image img = (Image)imgRaw.Clone();
+
+                    // 세로 이미지면 회전
+                    if (img.Height > img.Width)
+                    {
+                        img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
+
+                    Rectangle bounds = e.PageBounds;
+
+                    float printableWidth = bounds.Width;
+                    float printableHeight = bounds.Height;
+
+                    float imgAspect = (float)img.Width / img.Height;
+                    float paperAspect = printableWidth / printableHeight;
+
+                    float drawWidth, drawHeight;
+                    float offsetX = 0, offsetY = 0;
+
+                    if (imgAspect > paperAspect)
+                    {
+                        // 이미지가 가로로 김: 폭을 맞추고, 높이는 비례
+                        drawWidth = printableWidth;
+                        drawHeight = printableWidth / imgAspect;
+                        offsetY = (printableHeight - drawHeight) / 2;
+                    }
+                    else
+                    {
+                        // 이미지가 세로로 김: 높이를 맞추고, 폭은 비례
+                        drawHeight = printableHeight;
+                        drawWidth = printableHeight * imgAspect;
+                        offsetX = (printableWidth - drawWidth) / 2;
+                    }
+
+                    RectangleF drawRect = new RectangleF(offsetX, offsetY, drawWidth, drawHeight);
                     e.Graphics.DrawImage(img, drawRect);
 
                     img.Dispose();

@@ -197,6 +197,7 @@
             this.Controls.Add(this.title1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "sel_frame";
+            this.ShowInTaskbar = false;
             this.Text = "sel_frame";
             this.Load += new System.EventHandler(this.sel_frame_Load);
             this.order_panel.ResumeLayout(false);

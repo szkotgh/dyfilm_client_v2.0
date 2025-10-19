@@ -31,11 +31,11 @@
             this.touchpictureBox1 = new System.Windows.Forms.PictureBox();
             this.admin_panel = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.touchpictureBox1)).BeginInit();
             this.admin_panel.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             this.touchpictureBox1.Location = new System.Drawing.Point(0, 0);
             this.touchpictureBox1.Name = "touchpictureBox1";
-            this.touchpictureBox1.Size = new System.Drawing.Size(1920, 1080);
+            this.touchpictureBox1.Size = new System.Drawing.Size(1898, 1080);
             this.touchpictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.touchpictureBox1.TabIndex = 0;
             this.touchpictureBox1.TabStop = false;
@@ -66,8 +66,31 @@
             this.admin_panel.TabIndex = 1;
             this.admin_panel.Visible = false;
             // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button6.Location = new System.Drawing.Point(1136, 24);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(257, 74);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "설정";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button5.Location = new System.Drawing.Point(30, 24);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(257, 74);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "시스템종료";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // button4
             // 
+            this.button4.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button4.Location = new System.Drawing.Point(860, 24);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(257, 74);
@@ -78,6 +101,7 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button3.Location = new System.Drawing.Point(1641, 24);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(257, 74);
@@ -88,6 +112,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button2.Location = new System.Drawing.Point(584, 24);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(257, 74);
@@ -98,6 +123,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.Location = new System.Drawing.Point(308, 24);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(257, 74);
@@ -105,26 +131,6 @@
             this.button1.Text = "프로그램 종료";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(30, 24);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(257, 74);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "시스템종료";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(1136, 24);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(257, 74);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "설정";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // main
             // 
@@ -135,7 +141,7 @@
             this.Controls.Add(this.touchpictureBox1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "main";
-            this.Text = "main";
+            this.Text = "덕영필름 클라이언트";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.main_Close);
             this.Load += new System.EventHandler(this.main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.touchpictureBox1)).EndInit();

@@ -12,6 +12,11 @@ namespace dyfilm_client_v2._0.src
             DNP_DP_QW410
         }
 
+        public static PrinterSettings GetDefaultPrinterSettings()
+        {
+            return new PrinterSettings();
+        }
+
         public static PrinterType GetCurrentPrinterType()
         {
             string printerTypeStr = ConfigManager.GetValue("printer_type");
@@ -19,7 +24,7 @@ namespace dyfilm_client_v2._0.src
             {
                 return printerType;
             }
-            return PrinterType.SELPHY_CP1300; // 기본값
+            return PrinterType.SELPHY_CP1300;
         }
 
         public static void SetPrinterType(PrinterType printerType)
@@ -47,9 +52,16 @@ namespace dyfilm_client_v2._0.src
                 case PrinterType.SELPHY_CP1300:
                     return new PaperSize("SELPHY 4x6", 394, 583);
                 case PrinterType.DNP_DP_QW410:
-                    return new PaperSize("DNP 4x6", 400, 600);
+                    foreach (PaperSize paperSize in GetDefaultPrinterSettings().PaperSizes)
+                    {
+                        if (paperSize.PaperName == "(4x6)")
+                            return paperSize;
+                    }
+
+                    // If not found
+                    return new PaperSize("Default", 400, 600);
                 default:
-                    return new PaperSize("SELPHY 4x6", 394, 583);
+                    return new PaperSize("Default", 400, 600);
             }
         }
 
@@ -60,7 +72,7 @@ namespace dyfilm_client_v2._0.src
                 case PrinterType.SELPHY_CP1300:
                     return new Margins(0, 0, 0, 0);
                 case PrinterType.DNP_DP_QW410:
-                    return new Margins(5, 5, 5, 5);
+                    return new Margins(0, 0, 0, 0);
                 default:
                     return new Margins(0, 0, 0, 0);
             }
@@ -71,9 +83,9 @@ namespace dyfilm_client_v2._0.src
             switch (printerType)
             {
                 case PrinterType.SELPHY_CP1300:
-                    return true; // 세로 이미지는 회전
+                    return true;
                 case PrinterType.DNP_DP_QW410:
-                    return false; // 회전하지 않음
+                    return false;
                 default:
                     return true;
             }
@@ -92,14 +104,12 @@ namespace dyfilm_client_v2._0.src
 
             if (imgAspect > paperAspect)
             {
-                // 이미지가 가로로 김: 폭을 맞추고, 높이는 비례
                 drawWidth = printableWidth;
                 drawHeight = printableWidth / imgAspect;
                 offsetY = (printableHeight - drawHeight) / 2;
             }
             else
             {
-                // 이미지가 세로로 김: 높이를 맞추고, 폭은 비례
                 drawHeight = printableHeight;
                 drawWidth = printableHeight * imgAspect;
                 offsetX = (printableWidth - drawWidth) / 2;

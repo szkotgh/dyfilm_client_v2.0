@@ -23,6 +23,16 @@ namespace dyfilm_client_v2._0.forms
         {
             // Load current settings and display in text boxes
             LoadCurrentSettings();
+            
+            // Add event handler for printer selection change
+            cmbPrinter.SelectedIndexChanged += CmbPrinter_SelectedIndexChanged;
+        }
+
+        private void CmbPrinter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Refresh default printer name display when printer selection changes
+            PrinterSettings defaultPrinterName = PrinterConfig.GetDefaultPrinterSettings();
+            label2.Text = defaultPrinterName.PrinterName;
         }
 
         private void LoadCurrentSettings()
@@ -40,9 +50,14 @@ namespace dyfilm_client_v2._0.forms
             {
                 cmbPrinter.SelectedIndex = 0; // Default: SELPHY_CP1300
             }
+            
+            // Load and display default printer name
+            string defaultPrinterName = PrinterConfig.GetDefaultPrinterSettings().PrinterName;
+            label2.Text = defaultPrinterName;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -89,19 +104,21 @@ namespace dyfilm_client_v2._0.forms
             {
                 MessageBox.Show($"설정 저장 중 오류가 발생했습니다:\n{ex.Message}", "저장 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             // Reset to default values
             txtProcessUrl.Text = "https://film.dyhs.kr";
-            txtAuthToken.Text = "a0cf1af24a5789ef272d239e7e359a63";
+            txtAuthToken.Text = "";
             cmbPrinter.SelectedIndex = 0; // SELPHY CP1300
+            label2.Text = PrinterConfig.GetDefaultPrinterSettings().PrinterName;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void btnTestPrint_Click(object sender, EventArgs e)
@@ -110,11 +127,11 @@ namespace dyfilm_client_v2._0.forms
             {
                 // Print test page
                 PrintTestPage();
-                MessageBox.Show("테스트 페이지가 출력되었습니다.", "테스트 출력", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("출력되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"테스트 출력 중 오류가 발생했습니다:\n{ex.Message}", "출력 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"출력 중 오류가 발생했습니다:\n{ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -134,19 +151,19 @@ namespace dyfilm_client_v2._0.forms
                 printDoc.PrintPage += (sender, e) =>
                 {
                     using (Font titleFont = new Font("맑은 고딕", 16, FontStyle.Bold))
-                    using (Font contentFont = new Font("맑은 고딕", 12))
+                    using (Font contentFont = new Font("맑은 고딕", 10))
                     using (Brush brush = new SolidBrush(Color.Black))
                     {
                         Rectangle bounds = e.PageBounds;
                         
                         // Title
-                        string title = "덕영필름 클라이언트 테스트 페이지";
+                        string title = "클라이언트 프린터 테스트";
                         SizeF titleSize = e.Graphics.MeasureString(title, titleFont);
                         float titleX = (bounds.Width - titleSize.Width) / 2;
                         e.Graphics.DrawString(title, titleFont, brush, titleX, 50);
 
-                        // Printer information
-                        string printerInfo = $"선택된 프린터: {PrinterConfig.GetPrinterDisplayName(printerType)}";
+                        // Default Printer information
+                        string printerInfo = $"기본 프린터: {PrinterConfig.GetDefaultPrinterSettings().PrinterName}";
                         SizeF infoSize = e.Graphics.MeasureString(printerInfo, contentFont);
                         float infoX = (bounds.Width - infoSize.Width) / 2;
                         e.Graphics.DrawString(printerInfo, contentFont, brush, infoX, 100);
@@ -158,27 +175,56 @@ namespace dyfilm_client_v2._0.forms
                         e.Graphics.DrawString(paperInfo, contentFont, brush, paperX, 130);
 
                         // Margin information
-                        string marginInfo = $"마진: 상{printDoc.DefaultPageSettings.Margins.Top}, 하{printDoc.DefaultPageSettings.Margins.Bottom}, 좌{printDoc.DefaultPageSettings.Margins.Left}, 우{printDoc.DefaultPageSettings.Margins.Right}";
+                        string marginInfo = $"여백: {printDoc.DefaultPageSettings.Margins.Top},{printDoc.DefaultPageSettings.Margins.Bottom},{printDoc.DefaultPageSettings.Margins.Left},{printDoc.DefaultPageSettings.Margins.Right}";
                         SizeF marginSize = e.Graphics.MeasureString(marginInfo, contentFont);
                         float marginX = (bounds.Width - marginSize.Width) / 2;
                         e.Graphics.DrawString(marginInfo, contentFont, brush, marginX, 160);
 
-                        // Test pattern
-                        using (Pen pen = new Pen(Color.Black, 2))
+                        // CMYK Test pattern
+                        int startY = bounds.Height / 2 - 100;
+                        int lineSpacing = 2;
+                        int linesPerColor = 20;
+                        int totalLines = linesPerColor * 4;
+                        int colorBlockHeight = linesPerColor * lineSpacing;
+                        // Cyan
+                        using (Pen cyanPen = new Pen(Color.Cyan, 1))
                         {
-                            int centerX = bounds.Width / 2;
-                            int centerY = bounds.Height / 2;
-                            
-                            // Draw circle
-                            e.Graphics.DrawEllipse(pen, centerX - 50, centerY - 50, 100, 100);
-                            
-                            // Draw cross
-                            e.Graphics.DrawLine(pen, centerX - 60, centerY, centerX + 60, centerY);
-                            e.Graphics.DrawLine(pen, centerX, centerY - 60, centerX, centerY + 60);
+                            for (int i = 0; i < linesPerColor; i++)
+                            {
+                                int y = startY + (i * lineSpacing);
+                                e.Graphics.DrawLine(cyanPen, 50, y, bounds.Width - 50, y);
+                            }
+                        }
+                        // Magenta
+                        using (Pen magentaPen = new Pen(Color.Magenta, 1))
+                        {
+                            for (int i = 0; i < linesPerColor; i++)
+                            {
+                                int y = startY + colorBlockHeight + (i * lineSpacing);
+                                e.Graphics.DrawLine(magentaPen, 50, y, bounds.Width - 50, y);
+                            }
+                        }
+                        // Yellow
+                        using (Pen yellowPen = new Pen(Color.Yellow, 1))
+                        {
+                            for (int i = 0; i < linesPerColor; i++)
+                            {
+                                int y = startY + (colorBlockHeight * 2) + (i * lineSpacing);
+                                e.Graphics.DrawLine(yellowPen, 50, y, bounds.Width - 50, y);
+                            }
+                        }
+                        // Black
+                        using (Pen blackPen = new Pen(Color.Black, 1))
+                        {
+                            for (int i = 0; i < linesPerColor; i++)
+                            {
+                                int y = startY + (colorBlockHeight * 3) + (i * lineSpacing);
+                                e.Graphics.DrawLine(blackPen, 50, y, bounds.Width - 50, y);
+                            }
                         }
 
                         // Bottom message
-                        string bottomMsg = "이 페이지가 정상적으로 출력되면 프린터 설정이 올바릅니다.";
+                        string bottomMsg = "정상 출력되었습니다.";
                         SizeF bottomSize = e.Graphics.MeasureString(bottomMsg, contentFont);
                         float bottomX = (bounds.Width - bottomSize.Width) / 2;
                         e.Graphics.DrawString(bottomMsg, contentFont, brush, bottomX, bounds.Height - 50);

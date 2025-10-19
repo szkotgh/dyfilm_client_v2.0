@@ -88,6 +88,7 @@
             this.Controls.Add(this.title1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "first";
+            this.Text = "덕영필름 클라이언트";
             this.Load += new System.EventHandler(this.first_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

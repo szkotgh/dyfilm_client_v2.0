@@ -184,6 +184,7 @@
             this.Controls.Add(this.live_pictureBox);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "camera_capture";
+            this.ShowInTaskbar = false;
             this.Text = "s";
             this.Load += new System.EventHandler(this.camera_capture_Load);
             this.are_you_ready_panel.ResumeLayout(false);
