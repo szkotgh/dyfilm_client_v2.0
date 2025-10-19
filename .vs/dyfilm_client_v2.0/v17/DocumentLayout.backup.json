@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|c:\\users\\4070ti\\desktop\\dyfilm_client_v2.0-main\\forms\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\first.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|c:\\users\\4070ti\\desktop\\dyfilm_client_v2.0-main\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -35,7 +35,7 @@
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:forms\\create_capframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|c:\\users\\4070ti\\desktop\\dyfilm_client_v2.0-main\\src\\printerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\src\\printerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66B19113-11AD-4925-8F29-CC6596F2326B}|dyfilm_client_v2.0.csproj|solutionrelative:src\\printerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -66,20 +66,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 11,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "settings.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\settings.cs",
-              "RelativeDocumentMoniker": "forms\\settings.cs",
-              "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\settings.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "forms\\settings.cs [\uB514\uC790\uC778]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T12:07:00.613Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
@@ -89,8 +77,7 @@
               "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\main.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "forms\\main.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T10:36:46.208Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2025-10-19T10:36:46.208Z"
             },
             {
               "$type": "Document",
@@ -102,8 +89,7 @@
               "RelativeToolTip": "forms\\main.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAA2wC8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T06:18:24.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T06:18:24.141Z"
             },
             {
               "$type": "Document",
@@ -139,8 +125,7 @@
               "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\sel_frame.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "forms\\sel_frame.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T05:51:23.594Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2025-05-18T05:51:23.594Z"
             },
             {
               "$type": "Document",
@@ -152,8 +137,7 @@
               "RelativeToolTip": "forms\\create_capframe.cs",
               "ViewState": "AgIAAJ0AAAAAAAAAAAAAAKoAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T05:11:20.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T05:11:20.865Z"
             },
             {
               "$type": "Document",
@@ -164,8 +148,7 @@
               "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\capframe_print.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "forms\\capframe_print.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T05:51:10.875Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2025-05-18T05:51:10.875Z"
             },
             {
               "$type": "Document",
@@ -176,8 +159,7 @@
               "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\camera_capture.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "forms\\camera_capture.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T05:49:40.131Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2025-05-18T05:49:40.131Z"
             },
             {
               "$type": "Document",
@@ -188,8 +170,7 @@
               "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\create_capframe.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "forms\\create_capframe.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T05:11:19.721Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2025-05-14T05:11:19.721Z"
             },
             {
               "$type": "Document",
@@ -201,8 +182,7 @@
               "RelativeToolTip": "src\\PrinterConfig.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAAgwDwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T06:06:59.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T06:06:59.843Z"
             },
             {
               "$type": "Document",
@@ -224,10 +204,22 @@
               "RelativeDocumentMoniker": "forms\\settings.cs",
               "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\settings.cs",
               "RelativeToolTip": "forms\\settings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvxQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANIAAAAAAAAAAAAmwOgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-19T12:07:01.442Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "settings.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\settings.cs",
+              "RelativeDocumentMoniker": "forms\\settings.cs",
+              "ToolTip": "C:\\Users\\4070ti\\Desktop\\dyfilm_client_v2.0-main\\forms\\settings.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "forms\\settings.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T12:07:00.613Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
             },
             {
               "$type": "Document",
@@ -239,8 +231,7 @@
               "RelativeToolTip": "forms\\sel_frame.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T12:55:14.478Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-18T12:55:14.478Z"
             }
           ]
         }

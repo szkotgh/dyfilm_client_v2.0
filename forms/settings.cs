@@ -224,7 +224,8 @@ namespace dyfilm_client_v2._0.forms
                         }
 
                         // Bottom message
-                        string bottomMsg = "정상 출력되었습니다.";
+                        DateTime now = DateTime.Now;
+                        string bottomMsg = $"{now.Year}.{now.Month:D2}.{now.Day:D2}-{now.Hour:D2}:{now.Minute:D2}:{now.Second:D2}  정상 출력되었습니다.";
                         SizeF bottomSize = e.Graphics.MeasureString(bottomMsg, contentFont);
                         float bottomX = (bounds.Width - bottomSize.Width) / 2;
                         e.Graphics.DrawString(bottomMsg, contentFont, brush, bottomX, bounds.Height - 50);
