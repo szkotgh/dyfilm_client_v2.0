@@ -150,7 +150,7 @@ namespace dyfilm_client_v2._0.forms
 
                 printDoc.PrintPage += (sender, e) =>
                 {
-                    using (Font titleFont = new Font("맑은 고딕", 16, FontStyle.Bold))
+                    using (Font titleFont = new Font("AppleSDGothicNeoEB00", 16, FontStyle.Bold))
                     using (Font contentFont = new Font("맑은 고딕", 10))
                     using (Brush brush = new SolidBrush(Color.Black))
                     {
@@ -224,8 +224,7 @@ namespace dyfilm_client_v2._0.forms
                         }
 
                         // Bottom message
-                        DateTime now = DateTime.Now;
-                        string bottomMsg = $"{now.Year}.{now.Month:D2}.{now.Day:D2}-{now.Hour:D2}:{now.Minute:D2}:{now.Second:D2}  정상 출력되었습니다.";
+                        string bottomMsg = $"{DateTime.Now.ToString("yyyy.MM.dd-HH:mm:ss")}  정상 출력되었습니다.";
                         SizeF bottomSize = e.Graphics.MeasureString(bottomMsg, contentFont);
                         float bottomX = (bounds.Width - bottomSize.Width) / 2;
                         e.Graphics.DrawString(bottomMsg, contentFont, brush, bottomX, bounds.Height - 50);
@@ -233,6 +232,21 @@ namespace dyfilm_client_v2._0.forms
                 };
 
                 printDoc.Print();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConfigManager.LoadConfig();
+                LoadCurrentSettings();
+                Config.properties_init();
+                MessageBox.Show("새로고침되었습니다.", "완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"새로고침 중 오류가 발생했습니다:\n{ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

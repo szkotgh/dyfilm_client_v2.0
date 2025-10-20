@@ -8,8 +8,8 @@ namespace dyfilm_client_v2._0.src
 {
     public class ConfigManager
     {
-        private static readonly string CONFIG_FILE_PATH = Path.Combine(Application.StartupPath, "config.ini");
-        
+        private static readonly string CONFIG_FILE_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "dyfilm", "config.ini");
+
         private static Dictionary<string, string> _settings = new Dictionary<string, string>();
         
         private static readonly Dictionary<string, string> _defaultValues = new Dictionary<string, string>
@@ -90,6 +90,10 @@ namespace dyfilm_client_v2._0.src
         /// </summary>
         public static void SaveConfig()
         {
+            if (!Directory.Exists(Path.GetDirectoryName(CONFIG_FILE_PATH)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(CONFIG_FILE_PATH));
+            }
             try
             {
                 StringBuilder configContent = new StringBuilder();

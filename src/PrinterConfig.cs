@@ -85,7 +85,7 @@ namespace dyfilm_client_v2._0.src
                 case PrinterType.SELPHY_CP1300:
                     return true;
                 case PrinterType.DNP_DP_QW410:
-                    return false;
+                    return true;
                 default:
                     return true;
             }

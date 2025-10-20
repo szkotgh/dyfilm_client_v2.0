@@ -41,6 +41,7 @@ namespace dyfilm_client_v2._0.forms
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -181,13 +182,24 @@ namespace dyfilm_client_v2._0.forms
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 18F);
-            this.button3.Location = new System.Drawing.Point(655, 700);
+            this.button3.Location = new System.Drawing.Point(917, 700);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(228, 77);
             this.button3.TabIndex = 17;
             this.button3.Text = "취소";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("AppleSDGothicNeoEB00", 18F);
+            this.btnRefresh.Location = new System.Drawing.Point(658, 700);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(228, 77);
+            this.btnRefresh.TabIndex = 18;
+            this.btnRefresh.Text = "새로고침";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // settings
             // 
@@ -196,6 +208,7 @@ namespace dyfilm_client_v2._0.forms
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -216,7 +229,6 @@ namespace dyfilm_client_v2._0.forms
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "설정";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -238,5 +250,6 @@ namespace dyfilm_client_v2._0.forms
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
